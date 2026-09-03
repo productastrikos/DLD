@@ -1,0 +1,29 @@
+developer_id,name,name_ar,tier,district,contact_name,contact_email,registered_date,status,projects_count,last_login,engagement_score
+DEV-001,Emaar Properties,إعمار العقارية,Master Developer,Downtown Dubai,Shaikha Al Qassimi,partners@emaarpropertie.ae,2024-12-17,active,19,2026-06-07,89
+DEV-002,Nakheel,نخيل,Master Developer,Palm Jumeirah,Omar Al Rashidi,partners@nakheel.ae,2024-03-19,active,36,2026-06-10,58
+DEV-003,DAMAC Properties,داماك العقارية,Master Developer,Business Bay,Omar Al Rashidi,partners@damacpropertie.ae,2024-07-18,active,14,2026-06-14,78
+DEV-004,Dubai Properties,دبي للعقارات,Master Developer,JBR,Shaikha Al Qassimi,partners@dubaipropertie.ae,2024-01-10,active,24,2026-06-10,67
+DEV-005,Meraas,ميراس,Master Developer,City Walk,Layla Al Mansoori,partners@meraas.ae,2024-05-24,active,18,2026-06-09,81
+DEV-006,Sobha Realty,صبحا العقارية,Premium,Sobha Hartland,Maryam Al Shamsi,partners@sobharealty.ae,2025-05-28,active,14,2026-06-04,69
+DEV-007,Select Group,مجموعة سيلكت,Premium,Dubai Marina,Amna Al Muhairi,partners@selectgroup.ae,2025-10-31,active,12,2026-06-11,68
+DEV-008,Azizi Developments,عزيزي للتطوير,Premium,Al Furjan,Layla Al Mansoori,partners@azizidevelopme.ae,2026-01-25,active,14,2026-06-08,91
+DEV-009,Danube Properties,دانوب العقارية,Mid-Market,Al Warsan,Aisha Al Dhaheri,partners@danubeproperti.ae,2025-02-13,active,14,2026-06-13,94
+DEV-010,Ellington Properties,إلينغتون العقارية,Premium,Jumeirah Village,Aisha Al Dhaheri,partners@ellingtonprope.ae,2026-02-12,active,8,2026-06-08,80
+DEV-011,MAG Lifestyle,ماج لايف ستايل,Mid-Market,MBR City,Saeed Al Nuaimi,partners@maglifestyle.ae,2025-02-15,active,14,2026-06-09,96
+DEV-012,Deyaar Development,ديار للتطوير,Mid-Market,Al Barsha,Noura Al Hammadi,partners@deyaardevelopm.ae,2026-01-10,dormant,10,2026-02-03,15
+DEV-013,Union Properties,الاتحاد العقارية,Mid-Market,Motor City,Hessa Al Falasi,partners@unionpropertie.ae,2025-12-17,active,18,2026-06-11,81
+DEV-014,Wasl Properties,وصل العقارية,Master Developer,Al Wasl,Maryam Al Shamsi,partners@waslproperties.ae,2024-05-13,active,41,2026-06-10,94
+DEV-015,Omniyat,أومنيات,Luxury,Palm Jumeirah,Omar Al Rashidi,partners@omniyat.ae,2025-08-15,active,4,2026-06-06,62
+DEV-016,Binghatti Developers,بن غاطي للتطوير,Mid-Market,JVC,Omar Al Rashidi,partners@binghattidevel.ae,2025-05-22,active,18,2026-06-11,73
+DEV-017,Samana Developers,سمانا للتطوير,Mid-Market,Arjan,Omar Al Rashidi,partners@samanadevelope.ae,2026-02-11,dormant,15,2026-03-22,16
+DEV-018,Tiger Group,مجموعة تايجر,Mid-Market,Al Nahda,Khalid Al Suwaidi,partners@tigergroup.ae,2025-09-23,dormant,16,2026-04-04,17
+DEV-019,Aldar Properties,الدار العقارية,Master Developer,Dubai South,Amna Al Muhairi,partners@aldarpropertie.ae,2024-04-23,active,42,2026-06-07,60
+DEV-020,Shapoorji Pallonji,شابورجي بالونجي,Premium,Dubai Hills,Shaikha Al Qassimi,partners@shapoorjipallo.ae,2025-10-28,active,13,2026-06-11,73
+DEV-021,Arada Developments,أرادة للتطوير,Premium,Nad Al Sheba,Fatima Al Marzooqi,partners@aradadevelopme.ae,2025-10-21,active,15,2026-06-07,88
+DEV-022,Object 1,أوبجكت وان,Mid-Market,JVT,Aisha Al Dhaheri,partners@object.ae,2025-02-14,active,8,2026-06-13,68
+DEV-023,Nshama,نشامة,Mid-Market,Town Square,Omar Al Rashidi,partners@nshama.ae,2025-07-11,active,5,2026-06-05,80
+DEV-024,Reportage Properties,ريبورتاج العقارية,Mid-Market,Dubailand,Layla Al Mansoori,partners@reportageprope.ae,2024-10-25,active,12,2026-06-05,59
+DEV-025,Imtiaz Developments,امتياز للتطوير,Mid-Market,Meydan,Tariq Al Zaabi,partners@imtiazdevelopm.ae,2025-01-10,dormant,12,2025-11-02,18
+DEV-026,LEOS Developments,ليوس للتطوير,Premium,Al Barari,Majid Al Ali,partners@leosdevelopmen.ae,2025-08-01,active,13,2026-06-03,59
+DEV-027,Prestige One,برستيج وان,Premium,Dubai Sports City,Hessa Al Falasi,partners@prestigeone.ae,2026-02-14,active,14,2026-06-13,75
+DEV-028,Meteora Developers,ميتيورا للتطوير,Mid-Market,Studio City,Majid Al Ali,partners@meteoradevelop.ae,2025-07-09,active,16,2026-06-11,79

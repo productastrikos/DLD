@@ -1,0 +1,8 @@
+# Normalise to LF in the repository. The deployment targets are Linux — an
+# .htaccess, a systemd unit or an Nginx config checked out with CRLF is at
+# best noisy and at worst rejected by the parser.
+* text=auto eol=lf
+
+*.png  binary
+*.jpg  binary
+*.pdf  binary

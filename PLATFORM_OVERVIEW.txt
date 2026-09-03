@@ -1,0 +1,257 @@
+DLD REAL ESTATE DEVELOPER CONNECTIVITY PLATFORM — OVERVIEW
+Dubai Land Department · Marketing & Communications
+Status: Proof of Concept (Phases One–Two of the roadmap)
+Updated after the Digital Twin + AI intelligence build
+
+
+WHAT WE ARE TRYING TO ACHIEVE
+------------------------------
+DLD's Marketing & Communications / Partnerships Office runs joint campaigns,
+sponsorships, initiatives and exhibitions with ~28 private real-estate
+developer organisations. Today that coordination happens off-platform (email,
+phone, spreadsheets), which makes it hard to see programme status at a glance,
+track who owes what, or give developers a single place to act.
+
+This POC puts both sides of the relationship on one platform:
+  - DLD staff get a command center: launch initiatives, run the approval and
+    agreement pipeline, manage events, and see the whole partner ecosystem
+    both as analytics and as a live map of the emirate.
+  - Developers get a partner hub: what is expected of them, what they can join,
+    and what they have earned — scoped to their own organisation only.
+
+Beyond workflow, the build makes two arguments a client demo needs:
+  1. DLD's domain is geospatial, so the platform shows the portfolio as a
+     Digital Twin of Dubai, not just as tables.
+  2. "AI" means acting on the data, not decorating it — so the intelligence
+     layer answers questions, projects outcomes, recommends partners and flags
+     commercial risk, always showing its working.
+
+
+HOW IT'S BUILT
+------------------------------
+Full-stack, self-contained, no external database and no external services:
+  data/       11 CSV files as the system of record, written by a seeded
+               generator (npm run generate) so regeneration is reproducible.
+  server/     Express API, one endpoint per screen, plus two reasoning modules:
+                lib/ai.js   copilot, simulator, matching, anomalies, digest
+                lib/kpi.js  KPI register and traceability mapping
+  client/     React SPA (Vite + Tailwind), React Router, Recharts for charts,
+               MapLibre GL for the twin.
+
+Relational model:
+  - developers and campaigns are the two core entities
+  - participation_requests is the many-to-many join between them
+  - sponsorships layers commercial terms on the same developer/campaign pair
+  - projects geo-locates each developer's portfolio (the twin's data layer)
+  - events / event_participations mirror the campaign workflow for exhibitions
+
+Reference clock: every dataset is generated relative to a fixed instant, and
+the API reasons from that same instant. Using the wall clock instead would make
+a freshly generated dataset read as months stale.
+
+Consistency rule: all "current value" figures (KPI tiles, Portfolio Health, the
+weekly digest) flow through one shared helper, so no two widgets can report
+different numbers for the same named metric.
+
+
+ROLE-BASED ACCESS CONTROL
+------------------------------
+Access forks at three levels:
+  1. Login picks a portal identity.
+  2. Client-side route gating (ROLE_ROUTES) decides which screens render.
+  3. Server-side scoping filters every developer-portal response to the
+     signed-in developer_id — and cross-reading another partner returns 403.
+
+  Portal        | Identity                              | Sees
+  --------------|---------------------------------------|------------------------------------------
+  DLD Internal  | Executive — Marketing & Comms          | Strategy, twins, intelligence, ledger
+  DLD Internal  | Campaign Manager — Partnerships Office | Pipeline, approvals, events, twins, AI
+  DLD Internal  | Platform Administrator                 | Everything in the DLD portal
+  Developer     | Any of 12 developer organisations      | That organisation's own data only
+
+Sign-in is demo-grade by design (password = username; UAE PASS tab needs none).
+
+
+FEATURES / SCREENS
+------------------------------
+DLD COMMAND CENTER
+  1. Executive Smart Dashboard
+     - Portfolio Health: one 0–100 composite over four equally weighted pillars
+       (adoption, efficiency, commercial, delivery), each shown with its own
+       score and the evidence behind it — a composite nobody can decompose is
+       a composite nobody trusts.
+     - Auto-generated weekly digest in plain language, with "needs a decision"
+       chips that deep-link into the screen that resolves each item.
+     - KPI tiles, growth/efficiency/throughput trend charts, programme mix.
+     - Partner leaderboard with earned grade badges (Platinum → Bronze),
+       derived from the engagement score rather than assigned.
+
+  2. Initiatives & Campaigns Manager
+     - Kanban pipeline (Draft → Review → Active → Completed).
+     - Timeline view: every programme window on one axis, with month gridlines
+       and a today marker, so launch-date collisions become visible — the thing
+       a Kanban board structurally cannot show.
+     - Table view.
+     - Launch New Initiative creates a programme and invites partners in one
+       step, with AI smart matching ranking candidates against the brief.
+
+  3. Sponsorships & Agreements Ledger
+     - Sortable/filterable grid, commitment tracking, ROI, collection rate.
+     - AI anomaly-detection panel above the grid, with per-row risk flags.
+     - Inline contract preview rendered from the ledger record.
+
+  4. Approval Queue
+     - SLA timers against the 3-day service target: per-row countdown, warning
+       band before breach, compliance banner, and breaching work sorted to top.
+
+  5. Events & Exhibitions
+     - Pipeline board (Planning → Confirmed → Live → Delivered).
+     - Participation roster with confirm/decline, which notifies the partner.
+     - Impact reporting: footfall, leads, budget, earned media, media ROI.
+
+DIGITAL TWIN (two views, one dataset, one map engine)
+  6. Portfolio Map — clustered projects colourable by engagement status,
+     engagement score or sponsorship ROI; campaign and sponsorship-density
+     heatmaps; district outlines; event venues; and a quarter-by-quarter time
+     slider with playback showing partnership density growing across nine
+     quarters. Clicking a project opens the full partner record (campaigns,
+     agreements, projects, risk flags).
+  7. 3D City Twin — the same scene pitched, each project extruded to its real
+     height, coloured by the same dimensions.
+
+  The basemap is GENERATED, not fetched. There is no tile server: Dubai's
+  coastline, Creek, Palm Jumeirah, The World and the E11 corridor are produced
+  as GeoJSON and styled from the DLD tokens. This keeps the twin working on a
+  closed network and on-brand, rather than borrowing a generic basemap's colour
+  language. Every label is an HTML marker, because a MapLibre symbol layer
+  would require a remote glyph endpoint.
+
+INTELLIGENCE
+  8. AI Partnership Copilot — plain-language questions over the platform data.
+     Returns prose plus its evidence: the metrics used, the rows counted, and
+     for drafting requests a real recipient list with merge fields.
+  9. What-If Campaign Simulator — projects participants, reach, engagement,
+     leads and ROI before budget is committed, with the full derivation shown:
+     base rates, every multiplier, comparable programmes, a confidence figure,
+     and a budget-sensitivity table with genuine diminishing returns.
+ 10. KPI Traceability Matrix — all 28 KPIs from the brief, each with its
+     definition, current value, target, on/off-target status, and the exact
+     screen and widget that reports it. Off-target KPIs are shown, not hidden.
+
+DEVELOPER PARTNER HUB
+ 11. Partner Activity — obligations completion ring over four strands
+     (documents, requests, agreements, commitments), action items, metrics.
+ 12. Opportunity Marketplace — "Recommended for you" scored against the
+     partner's own format history, portfolio location, slot scarcity and past
+     lead yield, above the full gallery and the participation wizard.
+ 13. Events & Exhibitions — register for stand space, track participations.
+ 14. My Portfolio Map — the twin, scoped to that partner's own projects only.
+ 15. Digital Assets Library — masonry gallery with filter sidebar.
+
+CROSS-CUTTING
+  - Global search across partners, programmes, events, agreements, projects
+    and assets — filters the current screen and offers keyboard-navigable
+    jumps into any matching record (scoped by role).
+  - Communication Center as a real inbox: buckets, unread filter, per-item
+    read/unread, and every row deep-links into the record it is about.
+  - Light/dark theming throughout, including the map.
+
+
+THE AI LAYER — WHAT IT IS AND IS NOT
+------------------------------
+The intelligence layer is deliberately MODEL-FREE. A hosted LLM would add
+fluency but also a network dependency, an API key and non-determinism, none of
+which a self-contained demo can rely on. Every answer is computed from the live
+tables, so any figure the copilot quotes can be verified on the screen it came
+from, and the same question returns the same answer twice.
+
+The interface (intent → structured answer) is the shape an LLM wrapper would
+return, so swapping one in later is a change of implementation, not of contract.
+
+Honest limitations:
+  - It computes, it does not generate. Unusual phrasings fall back to the
+    weekly digest rather than being understood.
+  - The contract preview is rendered from the ledger record, not an executed
+    PDF. There is no document store in this build, and the preview says so.
+
+Simulator calibration is worth noting because it is the number most likely to
+be challenged: the value of a lead is derived from history so that a programme
+matching the historical average reproduces the portfolio's own measured return,
+and budget is damped to the 0.75 power (the cheapest audience is bought first).
+Modelling leads off partner headcount alone — the naive approach — produced an
+850% projected return against a 70% historical blended ROI, which is why the
+model is anchored the way it is.
+
+
+DESIGN STANDARDS
+------------------------------
+Follows the house design system at productastrikos/UserInterface:
+  - CSS custom properties drive all theming, full light/dark support.
+  - Modular card layout: KPI tiles, panels, modals, slide-out advisory and
+    alert panels, a consistent line-art icon set.
+
+Brand palette (per the DLD brief):
+  - Primary: Deep Cerulean Blue #0b5fa5
+  - Secondary: Stone Teal #2e7d80, Sandstone #b08a4f
+  - Grounds: pure white and light pearl grey #f4f6f9
+  - Purple is reserved exclusively for AI output — the copilot, the advisory
+    panel, anomaly detection, smart matching and recommendations all carry it,
+    and nothing else does. A viewer can always tell generated content from
+    recorded data by colour alone.
+
+Chart colours are a fixed three-hue categorical order, re-stepped separately
+for dark mode, validated for lightness band, chroma floor, colour-vision
+separation across every pair, and contrast:
+
+  Hue          | Light mode | Dark mode
+  -------------|------------|----------
+  Blue         | #0b5fa5    | #3d8fd0
+  Amber        | #c07818    | #c2871c
+  Green-teal   | #0f8f78    | #17a56f
+
+The map carries its own palette mirroring the same tokens (MapLibre needs
+literal colours), with engagement status using the app's status vocabulary so
+green/amber/grey mean the same thing on the map as everywhere else.
+
+
+CURRENT RUN STATE
+------------------------------
+Started with `npm run dev`:
+  - API server:    http://localhost:5061  (11 CSV tables loaded)
+  - Client (Vite): http://localhost:5174
+  - On the LAN:    http://192.168.0.90:5174
+
+Both processes bind to 0.0.0.0, so stakeholders on the same Wi-Fi can open the
+LAN URL. Windows Firewall may prompt to allow Node.js the first time.
+
+The Digital Twin bundle (MapLibre) is code-split, so it loads only when a twin
+screen is opened rather than on first paint.
+
+
+VERIFICATION PERFORMED
+------------------------------
+  - Production build passes: 862 modules, no errors.
+  - All 18 API endpoints return 200 with the expected shape.
+  - RBAC scoping confirmed: a partner sees only their own projects, and
+    cross-reading another partner's record returns 403.
+  - Copilot intent routing checked across 8 question forms.
+  - Simulator re-checked across 5 input combinations after recalibration.
+  - Map style validated against the official MapLibre style spec (0 errors in
+    both themes); all generated GeoJSON verified in-bounds with no NaNs.
+
+NOT visually verified: the map's rendered output. The automated browser pane in
+this environment runs hidden (document.hidden = true, 0 requestAnimationFrame
+frames), and MapLibre renders exclusively via rAF, so the canvas cannot paint
+there. The style and geometry are validated programmatically, but the twin
+screens should be eyeballed in a real browser before the demo.
+
+
+SCOPE / WHAT THIS IS NOT
+------------------------------
+A proof of concept covering Phases One–Two (analysis, design, and a working
+platform over a real relational data model). Out of scope by design:
+  - Real authentication (demo credentials only)
+  - Real file uploads (simulated)
+  - A persistence layer (CSV + in-memory mutations, reset on restart)
+  - A document store (contract previews are rendered from records)
+These are Phase Three.

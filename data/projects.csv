@@ -1,0 +1,141 @@
+project_id,developer_id,name,district,lng,lat,type,status,floors,height_m,units,value_aed,launch_date,completion_date,sustainability,sold_pct
+PRJ-0001,DEV-001,Corniche Residences,Downtown Dubai,55.27409,25.19477,residential,under_construction,75,255,300,799200000,2024-01-25,2025-11-23,Estidama 3P,100
+PRJ-0002,DEV-001,Amara Bay,Downtown Dubai,55.26464,25.22144,commercial,planning,73,307,53,196206000,2026-03-08,2028-08-24,Estidama 2P,0
+PRJ-0003,DEV-001,Corniche Heights,Downtown Dubai,55.27702,25.17238,retail,planning,56,190,224,639968000,2022-09-21,2026-02-10,Estidama 2P,0
+PRJ-0004,DEV-001,Meridian Plaza,Downtown Dubai,55.29161,25.19879,mixed-use,under_construction,78,265,468,660348000,2023-01-21,2026-10-27,None,88
+PRJ-0005,DEV-001,Cielo Bay,Downtown Dubai,55.29984,25.18712,retail,completed,72,245,720,648720000,2021-12-04,2025-04-07,None,21
+PRJ-0006,DEV-001,Oasis Residences,Downtown Dubai,55.27835,25.20261,mixed-use,under_construction,22,75,154,116424000,2024-10-06,2028-05-22,Estidama 3P,77
+PRJ-0007,DEV-001,Cielo Gardens,Downtown Dubai,55.27567,25.17893,hospitality,under_construction,61,207,305,673745000,2025-10-08,2029-06-12,LEED Gold,32
+PRJ-0008,DEV-001,Lumina Villas,Downtown Dubai,55.25674,25.17545,retail,planning,26,88,156,521976000,2022-07-06,2025-08-18,None,0
+PRJ-0009,DEV-002,Onyx Heights,Palm Jumeirah,55.14307,25.13129,mixed-use,planning,73,248,657,1988739000,2023-06-04,2026-05-16,Estidama 3P,0
+PRJ-0010,DEV-002,Elara Gardens,Palm Jumeirah,55.13562,25.12947,hospitality,planning,74,252,888,1737816000,2022-04-08,2025-11-09,LEED Platinum,0
+PRJ-0011,DEV-002,Azure Park,Palm Jumeirah,55.14648,25.13025,commercial,completed,71,298,199,558792000,2022-03-10,2026-03-20,Estidama 3P,60
+PRJ-0012,DEV-002,Solara Terraces,Palm Jumeirah,55.13682,25.12421,hospitality,completed,72,245,432,1509408000,2024-05-24,2027-06-25,LEED Silver,76
+PRJ-0013,DEV-002,Elara Grove,Palm Jumeirah,55.11638,25.12677,commercial,completed,65,273,42,84252000,2023-02-26,2024-11-18,Estidama 2P,97
+PRJ-0014,DEV-002,Solara Plaza,Palm Jumeirah,55.11567,25.11848,residential,completed,70,238,630,1949850000,2023-02-14,2026-09-08,Estidama 3P,98
+PRJ-0015,DEV-002,Noor Villas,Palm Jumeirah,55.15165,25.09441,mixed-use,under_construction,44,150,220,555060000,2022-03-19,2026-03-01,LEED Gold,61
+PRJ-0016,DEV-003,Lumina Bay,Business Bay,55.2513,25.21119,retail,handover,59,201,295,484980000,2022-03-10,2024-08-08,Estidama 2P,42
+PRJ-0017,DEV-003,Noor Towers,Business Bay,55.2447,25.19041,residential,handover,63,214,315,329805000,2023-02-09,2026-08-12,LEED Gold,24
+PRJ-0018,DEV-003,Terra Villas,Business Bay,55.24363,25.16141,hospitality,under_construction,56,190,336,1266384000,2023-08-13,2026-08-18,LEED Silver,76
+PRJ-0019,DEV-003,Rixos Villas,Business Bay,55.27471,25.18849,retail,under_construction,25,85,275,828025000,2024-08-24,2027-02-17,None,98
+PRJ-0020,DEV-003,Sereno Boulevard,Business Bay,55.27282,25.16247,residential,under_construction,61,207,610,1838540000,2024-09-22,2026-05-20,None,37
+PRJ-0021,DEV-003,Azure Villas,Business Bay,55.23565,25.21135,hospitality,completed,70,238,560,992320000,2024-11-11,2028-11-04,LEED Gold,31
+PRJ-0022,DEV-003,Zenith Court,Business Bay,55.26836,25.18205,residential,planning,23,78,161,564144000,2022-04-29,2026-01-02,LEED Silver,0
+PRJ-0023,DEV-004,Terra Court,JBR,55.12429,25.05599,hospitality,handover,33,112,231,319473000,2025-01-28,2028-06-08,Estidama 2P,26
+PRJ-0024,DEV-004,Corniche Plaza,JBR,55.15044,25.07006,retail,completed,70,238,700,1213100000,2024-04-28,2026-03-04,LEED Gold,49
+PRJ-0025,DEV-004,Elara Plaza,JBR,55.13427,25.09198,mixed-use,planning,28,95,196,181104000,2024-11-11,2026-05-19,None,0
+PRJ-0026,DEV-004,Sereno Boulevard,JBR,55.1107,25.07566,residential,under_construction,36,122,324,514188000,2023-01-06,2026-05-18,None,68
+PRJ-0027,DEV-004,Vantage Gardens,JBR,55.13964,25.09661,residential,planning,25,85,250,596000000,2025-07-22,2028-03-11,None,0
+PRJ-0028,DEV-004,Vista Heights,JBR,55.13515,25.06784,retail,under_construction,66,224,660,1089660000,2023-11-13,2027-02-20,LEED Gold,60
+PRJ-0029,DEV-004,Aster Villas,JBR,55.15215,25.06977,hospitality,under_construction,75,255,675,525150000,2024-01-05,2027-03-01,Estidama 2P,38
+PRJ-0030,DEV-004,Sereno Gardens,JBR,55.12043,25.05848,hospitality,handover,27,92,324,1171260000,2022-12-25,2026-04-18,Estidama 3P,23
+PRJ-0031,DEV-005,Zenith Quarter,City Walk,55.28251,25.19391,residential,completed,52,177,624,1092000000,2022-10-30,2024-08-22,LEED Platinum,30
+PRJ-0032,DEV-005,Cascade Plaza,City Walk,55.28145,25.23218,hospitality,planning,64,218,384,791040000,2022-04-07,2025-02-13,Estidama 2P,0
+PRJ-0033,DEV-005,Oasis Terraces,City Walk,55.29153,25.19618,residential,under_construction,70,238,560,537600000,2024-04-01,2027-07-01,None,95
+PRJ-0034,DEV-005,Rixos Bay,City Walk,55.26712,25.18853,mixed-use,under_construction,33,112,264,488664000,2022-05-30,2024-06-18,LEED Gold,78
+PRJ-0035,DEV-005,Zenith Residences,City Walk,55.25882,25.19491,hospitality,planning,64,218,384,447744000,2022-06-07,2025-12-15,LEED Gold,0
+PRJ-0036,DEV-005,Halo Heights,City Walk,55.28643,25.21966,residential,handover,37,126,259,467495000,2023-01-30,2024-10-14,Estidama 3P,44
+PRJ-0037,DEV-005,Terra Court,City Walk,55.26957,25.20556,mixed-use,under_construction,72,245,864,1375488000,2022-04-18,2026-01-17,None,90
+PRJ-0038,DEV-005,Cielo Towers,City Walk,55.237,25.19711,mixed-use,planning,63,214,693,585585000,2023-08-30,2027-03-17,LEED Silver,0
+PRJ-0039,DEV-005,Amara Quarter,City Walk,55.26912,25.18526,mixed-use,under_construction,44,150,528,1058640000,2023-08-19,2027-08-17,Estidama 2P,84
+PRJ-0040,DEV-006,Terra Boulevard,Sobha Hartland,55.31168,25.1995,hospitality,completed,7,24,28,98224000,2022-05-31,2026-01-03,LEED Platinum,44
+PRJ-0041,DEV-006,Terra Gardens,Sobha Hartland,55.27714,25.15443,mixed-use,completed,11,37,88,331672000,2025-07-13,2027-02-18,LEED Gold,66
+PRJ-0042,DEV-006,Cascade Court,Sobha Hartland,55.29245,25.19338,hospitality,planning,12,41,60,154200000,2023-07-03,2026-04-02,Estidama 2P,0
+PRJ-0043,DEV-007,Rixos Terraces,Dubai Marina,55.11844,25.05452,mixed-use,completed,16,54,144,126432000,2024-06-29,2027-03-14,LEED Gold,80
+PRJ-0044,DEV-007,Oasis Plaza,Dubai Marina,55.12357,25.05985,hospitality,planning,11,37,110,303930000,2024-11-30,2028-12-28,LEED Gold,0
+PRJ-0045,DEV-007,Lumina Bay,Dubai Marina,55.1311,25.07242,commercial,under_construction,28,118,238,741846000,2021-12-26,2023-11-03,None,75
+PRJ-0046,DEV-008,Noor Quarter,Al Furjan,55.12904,25.02358,residential,completed,33,112,198,504504000,2024-10-17,2028-09-20,LEED Platinum,95
+PRJ-0047,DEV-008,Palma Heights,Al Furjan,55.14271,25.01058,hospitality,under_construction,26,88,182,190190000,2025-09-13,2027-06-13,LEED Gold,29
+PRJ-0048,DEV-008,Azure Heights,Al Furjan,55.13978,25.0358,commercial,completed,32,134,195,227955000,2021-12-05,2023-09-12,Estidama 2P,66
+PRJ-0049,DEV-008,Palma Bay,Al Furjan,55.16135,25.0035,retail,completed,10,34,90,78930000,2025-03-18,2029-02-14,LEED Silver,64
+PRJ-0050,DEV-009,Aurora Boulevard,Al Warsan,55.39273,25.18331,retail,completed,6,20,72,166896000,2025-12-07,2028-10-14,None,32
+PRJ-0051,DEV-009,Vantage Residences,Al Warsan,55.37477,25.14253,residential,completed,33,112,396,626076000,2026-01-02,2030-02-01,LEED Platinum,87
+PRJ-0052,DEV-009,Noor Bay,Al Warsan,55.38095,25.18176,hospitality,completed,32,109,128,202624000,2022-08-26,2026-01-16,LEED Gold,37
+PRJ-0053,DEV-009,Aurora Court,Al Warsan,55.40869,25.18494,residential,completed,34,116,272,789888000,2022-05-29,2024-12-21,None,18
+PRJ-0054,DEV-009,Aurora Quarter,Al Warsan,55.40115,25.18468,hospitality,handover,29,99,203,568400000,2023-07-01,2026-04-08,Estidama 3P,43
+PRJ-0055,DEV-010,Aurelia Boulevard,Jumeirah Village,55.23884,25.0783,residential,completed,7,24,56,177072000,2023-10-31,2026-10-23,Estidama 3P,43
+PRJ-0056,DEV-010,Sereno Residences,Jumeirah Village,55.21259,25.03259,retail,completed,32,109,320,965120000,2026-01-19,2027-12-17,None,75
+PRJ-0057,DEV-010,Vista Heights,Jumeirah Village,55.20945,25.07646,retail,under_construction,20,68,180,599940000,2023-04-30,2025-11-21,LEED Platinum,34
+PRJ-0058,DEV-010,Aurelia Bay,Jumeirah Village,55.20489,25.04902,hospitality,planning,13,44,117,119691000,2022-02-04,2024-05-25,LEED Silver,0
+PRJ-0059,DEV-011,Sahara Villas,MBR City,55.28728,25.16417,mixed-use,under_construction,15,51,165,450285000,2022-09-10,2025-11-24,Estidama 3P,60
+PRJ-0060,DEV-011,Riviera Villas,MBR City,55.30245,25.16845,retail,under_construction,15,51,135,480330000,2024-06-14,2025-12-16,Estidama 2P,37
+PRJ-0061,DEV-011,Riviera Quarter,MBR City,55.328,25.17246,hospitality,under_construction,11,37,44,146124000,2024-01-06,2027-09-04,Estidama 3P,92
+PRJ-0062,DEV-012,Lumina Grove,Al Barsha,55.20113,25.10288,hospitality,under_construction,31,105,279,676854000,2024-10-28,2027-06-13,LEED Platinum,26
+PRJ-0063,DEV-012,Rixos Bay,Al Barsha,55.18636,25.08569,retail,completed,33,112,330,597300000,2022-09-24,2024-05-17,Estidama 2P,68
+PRJ-0064,DEV-012,Vista Plaza,Al Barsha,55.17533,25.11767,hospitality,planning,16,54,80,181840000,2023-09-15,2025-03-23,Estidama 3P,0
+PRJ-0065,DEV-013,Noor Park,Motor City,55.23029,25.03901,commercial,under_construction,21,88,149,525374000,2023-12-23,2027-07-06,LEED Gold,98
+PRJ-0066,DEV-013,Aurora Grove,Motor City,55.21109,25.0285,retail,completed,9,31,36,96660000,2022-11-13,2026-12-06,LEED Gold,19
+PRJ-0067,DEV-013,Halo Bay,Motor City,55.25423,25.05528,commercial,under_construction,25,105,55,52140000,2022-01-07,2025-05-29,LEED Gold,65
+PRJ-0068,DEV-013,Noor Grove,Motor City,55.24837,25.03526,hospitality,under_construction,20,68,160,240960000,2024-12-07,2027-10-22,LEED Platinum,93
+PRJ-0069,DEV-013,Corniche Plaza,Motor City,55.27089,25.05735,commercial,handover,34,143,149,273713000,2026-01-08,2028-02-02,Estidama 3P,55
+PRJ-0070,DEV-014,Zenith Villas,Al Wasl,55.25474,25.19307,commercial,completed,43,181,149,545191000,2024-04-25,2027-03-18,Estidama 3P,88
+PRJ-0071,DEV-014,Aster Plaza,Al Wasl,55.26895,25.20097,commercial,completed,77,323,60,70920000,2025-08-03,2027-10-14,Estidama 2P,24
+PRJ-0072,DEV-014,Amara Park,Al Wasl,55.27756,25.20888,hospitality,under_construction,46,156,322,808220000,2025-02-14,2026-10-06,LEED Gold,76
+PRJ-0073,DEV-014,Aurora Towers,Al Wasl,55.23347,25.19961,mixed-use,completed,67,228,804,2719932000,2022-08-15,2025-04-16,LEED Platinum,60
+PRJ-0074,DEV-014,Meridian Terraces,Al Wasl,55.22173,25.19538,residential,completed,32,109,224,568288000,2023-03-09,2024-12-03,LEED Silver,72
+PRJ-0075,DEV-014,Riviera Villas,Al Wasl,55.23199,25.20254,hospitality,completed,59,201,413,406805000,2022-05-27,2024-12-27,LEED Gold,38
+PRJ-0076,DEV-015,Amara Heights,Palm Jumeirah,55.14692,25.10614,hospitality,completed,35,119,385,291830000,2023-12-18,2026-10-28,Estidama 2P,68
+PRJ-0077,DEV-015,Corniche Villas,Palm Jumeirah,55.1614,25.11634,residential,completed,69,235,759,1049697000,2024-10-29,2027-09-07,LEED Silver,82
+PRJ-0078,DEV-015,Azure Gardens,Palm Jumeirah,55.16781,25.1367,mixed-use,handover,76,258,608,476064000,2024-06-21,2026-08-10,LEED Silver,71
+PRJ-0079,DEV-015,Lumina Terraces,Palm Jumeirah,55.14277,25.1063,retail,under_construction,46,156,506,1566070000,2024-04-29,2026-06-04,LEED Platinum,23
+PRJ-0080,DEV-016,Aurora Grove,JVC,55.18067,25.03379,residential,under_construction,20,68,160,198880000,2025-06-30,2028-07-12,Estidama 3P,96
+PRJ-0081,DEV-016,Sapphire Residences,JVC,55.20105,25.06038,residential,planning,26,88,260,494000000,2023-07-12,2026-12-01,Estidama 2P,0
+PRJ-0082,DEV-016,Sereno Boulevard,JVC,55.22388,25.03067,hospitality,under_construction,30,102,330,734250000,2023-01-21,2026-10-09,LEED Silver,77
+PRJ-0083,DEV-016,Aurelia Towers,JVC,55.19746,25.04285,commercial,under_construction,30,126,68,99620000,2023-04-20,2026-05-27,None,66
+PRJ-0084,DEV-016,Onyx Towers,JVC,55.17994,25.0339,retail,completed,28,95,168,630672000,2023-02-09,2024-12-21,None,42
+PRJ-0085,DEV-017,Sapphire Terraces,Arjan,55.22769,25.0725,retail,planning,18,61,216,298944000,2023-05-13,2025-08-20,Estidama 3P,0
+PRJ-0086,DEV-017,Azure Boulevard,Arjan,55.26715,25.06112,residential,planning,31,105,310,678280000,2024-06-04,2025-12-16,Estidama 3P,0
+PRJ-0087,DEV-017,Oasis Grove,Arjan,55.23,25.06576,residential,completed,28,95,280,654640000,2025-07-16,2028-07-25,LEED Platinum,77
+PRJ-0088,DEV-018,Aurelia Plaza,Al Nahda,55.35738,25.31577,residential,completed,18,61,180,578160000,2024-09-20,2026-12-21,LEED Silver,84
+PRJ-0089,DEV-018,Zenith Quarter,Al Nahda,55.39554,25.26508,hospitality,planning,7,24,70,227430000,2023-01-13,2025-07-04,LEED Platinum,0
+PRJ-0090,DEV-018,Sereno Park,Al Nahda,55.34259,25.28305,hospitality,under_construction,18,61,216,325944000,2022-03-04,2024-12-12,Estidama 3P,96
+PRJ-0091,DEV-018,Aster Terraces,Al Nahda,55.37972,25.27422,hospitality,completed,11,37,121,162745000,2025-10-29,2028-06-08,LEED Gold,67
+PRJ-0092,DEV-019,Noor Plaza,Dubai South,55.12675,24.90717,retail,under_construction,72,245,504,833112000,2025-04-12,2028-12-29,None,44
+PRJ-0093,DEV-019,Aster Court,Dubai South,55.1251,24.90496,commercial,planning,73,307,55,127050000,2024-08-06,2026-09-28,LEED Platinum,0
+PRJ-0094,DEV-019,Amara Plaza,Dubai South,55.18575,24.90572,commercial,planning,46,193,155,447330000,2022-02-17,2025-04-27,LEED Platinum,0
+PRJ-0095,DEV-019,Corniche Park,Dubai South,55.13677,24.88874,retail,planning,65,221,325,369850000,2023-06-02,2025-02-22,Estidama 3P,0
+PRJ-0096,DEV-019,Elara Grove,Dubai South,55.16197,24.91694,commercial,handover,69,290,240,332880000,2022-10-23,2024-08-12,Estidama 3P,98
+PRJ-0097,DEV-019,Rixos Gardens,Dubai South,55.17819,24.91356,hospitality,completed,36,122,216,553176000,2025-04-30,2029-04-10,LEED Gold,53
+PRJ-0098,DEV-019,Oasis Court,Dubai South,55.15681,24.89409,residential,planning,20,68,240,578640000,2025-09-06,2028-08-23,LEED Gold,0
+PRJ-0099,DEV-019,Corniche Villas,Dubai South,55.15983,24.90102,hospitality,completed,35,119,315,666540000,2024-05-07,2025-12-28,LEED Silver,63
+PRJ-0100,DEV-020,Zenith Residences,Dubai Hills,55.27206,25.09558,mixed-use,planning,21,71,252,726264000,2026-02-08,2029-10-01,None,0
+PRJ-0101,DEV-020,Cascade Grove,Dubai Hills,55.26123,25.10038,mixed-use,handover,21,71,84,297780000,2025-04-19,2028-04-03,Estidama 3P,100
+PRJ-0102,DEV-020,Sahara Terraces,Dubai Hills,55.23166,25.08735,retail,completed,32,109,352,889856000,2024-06-22,2026-01-24,LEED Silver,60
+PRJ-0103,DEV-021,Vantage Terraces,Nad Al Sheba,55.34776,25.16501,hospitality,completed,34,116,170,166770000,2025-10-18,2027-06-22,Estidama 2P,99
+PRJ-0104,DEV-021,Meridian Terraces,Nad Al Sheba,55.28926,25.17019,commercial,under_construction,14,59,79,256355000,2021-11-28,2024-12-22,Estidama 2P,74
+PRJ-0105,DEV-021,Vista Boulevard,Nad Al Sheba,55.32985,25.15916,mixed-use,completed,22,75,132,264660000,2025-02-04,2028-09-12,LEED Gold,19
+PRJ-0106,DEV-021,Aurelia Court,Nad Al Sheba,55.31082,25.14429,hospitality,completed,31,105,310,591170000,2025-05-14,2027-04-08,LEED Platinum,80
+PRJ-0107,DEV-021,Lumina Terraces,Nad Al Sheba,55.32904,25.17954,retail,handover,11,37,99,223146000,2022-11-22,2025-10-11,Estidama 3P,44
+PRJ-0108,DEV-022,Cielo Plaza,JVT,55.16637,25.02597,commercial,completed,21,88,195,257010000,2024-02-03,2026-08-30,LEED Platinum,46
+PRJ-0109,DEV-022,Solara Towers,JVT,55.21339,25.02173,mixed-use,handover,21,71,231,311388000,2022-03-20,2024-09-17,LEED Silver,37
+PRJ-0110,DEV-022,Zenith Towers,JVT,55.16214,25.02257,residential,under_construction,34,116,306,745110000,2023-04-30,2026-03-14,LEED Gold,72
+PRJ-0111,DEV-022,Verdana Park,JVT,55.17661,25.03296,hospitality,completed,19,65,114,287964000,2023-06-13,2026-08-18,Estidama 2P,39
+PRJ-0112,DEV-022,Halo Towers,JVT,55.20274,25.04002,residential,handover,29,99,145,306675000,2023-09-23,2026-01-19,Estidama 3P,29
+PRJ-0113,DEV-023,Marasi Terraces,Town Square,55.28977,24.98549,residential,completed,13,44,143,324753000,2022-10-05,2025-07-23,LEED Silver,69
+PRJ-0114,DEV-023,Lumina Quarter,Town Square,55.27596,24.98656,mixed-use,planning,13,44,130,148200000,2023-04-20,2026-07-30,LEED Platinum,0
+PRJ-0115,DEV-023,Rixos Bay,Town Square,55.24178,25.02343,mixed-use,under_construction,18,61,90,107910000,2022-02-12,2025-01-18,LEED Silver,20
+PRJ-0116,DEV-023,Sapphire Terraces,Town Square,55.28174,24.98715,commercial,completed,10,42,208,552032000,2025-07-14,2029-03-21,Estidama 3P,72
+PRJ-0117,DEV-023,Onyx Gardens,Town Square,55.28043,25.00006,residential,under_construction,33,112,198,436788000,2025-11-09,2029-07-19,LEED Gold,78
+PRJ-0118,DEV-023,Lumina Bay,Town Square,55.27918,25.01729,mixed-use,handover,18,61,162,120042000,2022-03-17,2023-10-07,LEED Gold,49
+PRJ-0119,DEV-024,Noor Plaza,Dubailand,55.33302,25.04084,residential,under_construction,14,48,168,241920000,2022-12-20,2025-11-24,LEED Platinum,33
+PRJ-0120,DEV-024,Verdana Plaza,Dubailand,55.28843,25.0393,commercial,under_construction,16,67,60,215160000,2024-10-13,2026-11-18,LEED Gold,18
+PRJ-0121,DEV-024,Corniche Quarter,Dubailand,55.31703,25.05488,mixed-use,completed,32,109,128,108544000,2024-06-24,2027-05-28,None,83
+PRJ-0122,DEV-024,Aster Villas,Dubailand,55.30194,25.03703,residential,handover,10,34,110,405240000,2023-07-23,2025-05-07,LEED Platinum,70
+PRJ-0123,DEV-024,Verdana Quarter,Dubailand,55.33534,25.02732,mixed-use,under_construction,33,112,396,787644000,2024-05-25,2027-09-04,LEED Silver,88
+PRJ-0124,DEV-024,Corniche Terraces,Dubailand,55.28922,25.04674,commercial,under_construction,13,55,53,52152000,2022-03-25,2025-04-12,Estidama 2P,91
+PRJ-0125,DEV-025,Solara Residences,Meydan,55.30833,25.1499,mixed-use,under_construction,24,82,144,133632000,2023-05-18,2026-03-24,LEED Platinum,83
+PRJ-0126,DEV-025,Onyx Quarter,Meydan,55.29817,25.14198,commercial,under_construction,14,59,216,642600000,2022-03-23,2025-02-08,Estidama 3P,58
+PRJ-0127,DEV-025,Meridian Quarter,Meydan,55.29764,25.17035,residential,completed,12,41,48,82032000,2023-06-05,2025-04-30,LEED Silver,55
+PRJ-0128,DEV-025,Amara Heights,Meydan,55.31667,25.18447,mixed-use,under_construction,9,31,45,50580000,2026-02-22,2029-01-25,Estidama 3P,81
+PRJ-0129,DEV-025,Verdana Park,Meydan,55.28613,25.14278,mixed-use,planning,8,27,56,178304000,2023-09-14,2026-11-10,LEED Silver,0
+PRJ-0130,DEV-025,Terra Villas,Meydan,55.27456,25.14743,retail,handover,20,68,240,382560000,2025-10-23,2029-10-23,None,50
+PRJ-0131,DEV-026,Noor Park,Al Barari,55.33532,25.10055,mixed-use,completed,29,99,290,579710000,2024-03-02,2027-08-13,LEED Platinum,29
+PRJ-0132,DEV-026,Elara Towers,Al Barari,55.33439,25.09142,hospitality,completed,30,102,210,765030000,2024-05-03,2027-11-02,Estidama 3P,65
+PRJ-0133,DEV-026,Amara Terraces,Al Barari,55.31666,25.05905,hospitality,completed,17,58,119,180047000,2025-10-28,2028-09-13,Estidama 2P,91
+PRJ-0134,DEV-027,Lumina Gardens,Dubai Sports City,55.22201,25.05603,residential,under_construction,33,112,297,678051000,2024-01-22,2026-03-19,LEED Platinum,23
+PRJ-0135,DEV-027,Azure Villas,Dubai Sports City,55.21575,25.02593,hospitality,planning,17,58,68,243916000,2023-05-25,2027-06-15,Estidama 2P,0
+PRJ-0136,DEV-027,Zenith Park,Dubai Sports City,55.2235,25.06471,mixed-use,under_construction,24,82,192,177600000,2022-04-10,2023-11-05,Estidama 3P,20
+PRJ-0137,DEV-028,Aurora Quarter,Studio City,55.2347,25.02344,commercial,completed,30,126,178,432540000,2024-11-02,2026-10-01,Estidama 3P,76
+PRJ-0138,DEV-028,Oasis Boulevard,Studio City,55.26606,25.05076,mixed-use,completed,13,44,130,441610000,2022-07-01,2026-08-07,Estidama 3P,91
+PRJ-0139,DEV-028,Halo Quarter,Studio City,55.25681,25.04227,commercial,under_construction,26,109,236,391760000,2024-04-10,2028-01-02,LEED Silver,65
+PRJ-0140,DEV-028,Oasis Terraces,Studio City,55.27572,25.01033,commercial,completed,32,134,121,299475000,2021-12-04,2023-11-01,LEED Gold,71

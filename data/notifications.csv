@@ -1,0 +1,35 @@
+notif_id,ts,audience,developer_id,kind,title,body,read
+NTF-0015,2026-06-15T06:00:00.000Z,developer,DEV-003,approval,Participation approved — Dubai Property Festival 2026,Your request REQ-0001 was approved. Asset deadlines are now visible in your workspace.,yes
+NTF-0027,2026-06-15T04:00:00.000Z,all,,info,Dubai Real Estate Week — partner invitations open,Registration closes 2026-05-24. 20 partner slots available.,no
+NTF-0001,2026-06-15T02:00:00.000Z,dld,DEV-005,upload,Meraas uploaded materials,"1 of 3 required documents received for ""Dubai Real Estate Week"".",no
+NTF-0002,2026-06-14T23:00:00.000Z,dld,DEV-002,upload,Nakheel uploaded materials,"0 of 2 required documents received for ""Dubai Real Estate Week"".",no
+NTF-0016,2026-06-14T12:00:00.000Z,developer,DEV-023,approval,Participation approved — Dubai Property Festival 2026,Your request REQ-0002 was approved. Asset deadlines are now visible in your workspace.,yes
+NTF-0003,2026-06-14T12:00:00.000Z,dld,DEV-009,upload,Danube Properties uploaded materials,"1 of 5 required documents received for ""Dubai Real Estate Week"".",no
+NTF-0004,2026-06-14T07:00:00.000Z,dld,DEV-014,upload,Wasl Properties uploaded materials,"2 of 3 required documents received for ""Dubai Real Estate Week"".",no
+NTF-0017,2026-06-14T06:00:00.000Z,developer,DEV-005,approval,Participation approved — Dubai Property Festival 2026,Your request REQ-0003 was approved. Asset deadlines are now visible in your workspace.,no
+NTF-0028,2026-06-14T04:00:00.000Z,all,,info,Branded Residences Showcase — partner invitations open,Registration closes 2026-05-27. 10 partner slots available.,yes
+NTF-0005,2026-06-14T01:00:00.000Z,dld,DEV-014,upload,Wasl Properties uploaded materials,"2 of 3 required documents received for ""Branded Residences Showcase"".",no
+NTF-0018,2026-06-13T19:00:00.000Z,developer,DEV-019,approval,Participation approved — Dubai Property Festival 2026,Your request REQ-0004 was approved. Asset deadlines are now visible in your workspace.,yes
+NTF-0006,2026-06-13T15:00:00.000Z,dld,DEV-008,upload,Azizi Developments uploaded materials,"3 of 5 required documents received for ""PropTech Innovation Challenge"".",yes
+NTF-0029,2026-06-13T12:00:00.000Z,all,,info,PropTech Innovation Challenge — partner invitations open,Registration closes 2026-05-09. 8 partner slots available.,no
+NTF-0007,2026-06-13T10:00:00.000Z,dld,DEV-026,upload,LEOS Developments uploaded materials,"1 of 2 required documents received for ""Sustainable Communities Awards"".",no
+NTF-0019,2026-06-13T08:00:00.000Z,developer,DEV-008,approval,Participation approved — Dubai Property Festival 2026,Your request REQ-0005 was approved. Asset deadlines are now visible in your workspace.,yes
+NTF-0008,2026-06-13T06:00:00.000Z,dld,DEV-016,upload,Binghatti Developers uploaded materials,"2 of 5 required documents received for ""Sustainable Communities Awards"".",no
+NTF-0020,2026-06-12T19:00:00.000Z,developer,DEV-024,approval,Participation approved — Dubai Property Festival 2026,Your request REQ-0006 was approved. Asset deadlines are now visible in your workspace.,yes
+NTF-0009,2026-06-12T18:00:00.000Z,dld,DEV-011,upload,MAG Lifestyle uploaded materials,"0 of 2 required documents received for ""IPS London — Dubai Stand"".",yes
+NTF-0010,2026-06-12T15:00:00.000Z,dld,DEV-014,upload,Wasl Properties uploaded materials,"4 of 5 required documents received for ""IPS London — Dubai Stand"".",yes
+NTF-0021,2026-06-12T11:00:00.000Z,developer,DEV-027,approval,Participation approved — Dubai Property Festival 2026,Your request REQ-0007 was approved. Asset deadlines are now visible in your workspace.,no
+NTF-0030,2026-06-12T10:00:00.000Z,all,,info,Sustainable Communities Awards — partner invitations open,Registration closes 2026-04-28. 15 partner slots available.,yes
+NTF-0011,2026-06-12T07:00:00.000Z,dld,DEV-020,upload,Shapoorji Pallonji uploaded materials,"3 of 3 required documents received for ""IPS London — Dubai Stand"".",no
+NTF-0022,2026-06-12T01:00:00.000Z,developer,DEV-021,approval,Participation approved — Dubai Property Festival 2026,Your request REQ-0008 was approved. Asset deadlines are now visible in your workspace.,yes
+NTF-0012,2026-06-12T00:00:00.000Z,dld,DEV-026,upload,LEOS Developments uploaded materials,"2 of 2 required documents received for ""IPS London — Dubai Stand"".",yes
+NTF-0031,2026-06-11T20:00:00.000Z,all,,info,IPS London — Dubai Stand — partner invitations open,Registration closes 2026-04-16. 16 partner slots available.,no
+NTF-0013,2026-06-11T19:00:00.000Z,dld,DEV-006,upload,Sobha Realty uploaded materials,"0 of 5 required documents received for ""Rental Yield Awareness Drive"".",yes
+NTF-0023,2026-06-11T13:00:00.000Z,developer,DEV-001,approval,Participation approved — Dubai Property Festival 2026,Your request REQ-0009 was approved. Asset deadlines are now visible in your workspace.,no
+NTF-0014,2026-06-11T07:00:00.000Z,dld,DEV-014,upload,Wasl Properties uploaded materials,"1 of 3 required documents received for ""Rental Yield Awareness Drive"".",no
+NTF-0032,2026-06-11T01:00:00.000Z,all,,info,Rental Yield Awareness Drive — partner invitations open,Registration closes 2026-04-22. 14 partner slots available.,no
+NTF-0024,2026-06-10T20:00:00.000Z,developer,DEV-020,approval,Participation approved — Dubai Property Festival 2026,Your request REQ-0010 was approved. Asset deadlines are now visible in your workspace.,yes
+NTF-0025,2026-06-10T09:00:00.000Z,developer,DEV-002,approval,Participation approved — Golden Visa Investor Roadshow,Your request REQ-0011 was approved. Asset deadlines are now visible in your workspace.,no
+NTF-0033,2026-06-10T08:00:00.000Z,all,,info,Family Communities Promotion — partner invitations open,Registration closes 2026-04-19. 10 partner slots available.,no
+NTF-0026,2026-06-10T04:00:00.000Z,developer,DEV-001,approval,Participation approved — Golden Visa Investor Roadshow,Your request REQ-0012 was approved. Asset deadlines are now visible in your workspace.,yes
+NTF-0034,2026-06-09T15:00:00.000Z,all,,info,Investor Confidence Summit — partner invitations open,Registration closes 2026-07-29. 15 partner slots available.,no

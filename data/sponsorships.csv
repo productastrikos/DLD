@@ -1,0 +1,34 @@
+agreement_id,developer_id,campaign_id,title,tier,value_aed,signed_date,expiry_date,status,commitments_total,commitments_met,invoiced_aed,roi_percent
+AGR-001,DEV-001,CMP-018,Category Sponsorship — Real Estate Media Partnership,Gold,1000000,2026-06-09,2028-01-12,active,7,1,440000,17.6
+AGR-002,DEV-001,CMP-018,Category Sponsorship — Real Estate Media Partnership,Silver,4600000,2026-04-27,2027-12-13,pending_signature,9,5,4094000,63.6
+AGR-003,DEV-001,CMP-008,Category Sponsorship — Off-Plan Transparency Initiative,Category,5900000,2024-04-09,2025-09-09,expired,14,14,5900000,61.2
+AGR-004,DEV-002,CMP-013,Category Sponsorship — IPS London — Dubai Stand,Category,7300000,2026-02-11,2027-07-12,active,9,9,4964000,81.3
+AGR-005,DEV-002,CMP-005,Strategic Sponsorship — First-Time Buyer Enablement Programme,Platinum,2700000,2025-07-22,2027-07-06,active,14,1,2430000,52.1
+AGR-006,DEV-003,CMP-017,Silver Sponsorship — Digital Escrow Rollout,Category,1800000,2026-05-26,2028-04-27,active,10,10,1314000,13.9
+AGR-007,DEV-003,CMP-002,Strategic Sponsorship — Golden Visa Investor Roadshow,Platinum,4700000,2025-06-29,2027-06-25,active,12,8,4183000,215.1
+AGR-008,DEV-004,CMP-007,Category Sponsorship — MIPIM Cannes — Dubai Delegation,Gold,4200000,2024-10-05,2026-07-03,active,4,4,1764000,19.6
+AGR-009,DEV-004,CMP-010,Silver Sponsorship — Branded Residences Showcase,Gold,2900000,2026-03-16,2027-10-26,active,5,3,1972000,82.8
+AGR-010,DEV-005,CMP-019,Category Sponsorship — Dubai South Growth Corridor,Gold,5600000,2026-04-11,2027-04-11,active,12,1,1960000,2.1
+AGR-011,DEV-005,CMP-001,Gold Sponsorship — Dubai Property Festival 2026,Platinum,4300000,2024-09-07,2026-07-23,active,11,2,3483000,89
+AGR-012,DEV-006,CMP-014,Platinum Sponsorship — Rental Yield Awareness Drive,Gold,2000000,2026-01-27,2028-01-08,active,7,6,720000,7.1
+AGR-013,DEV-007,CMP-006,Category Sponsorship — Ramadan Real Estate Offers,Gold,6500000,2025-09-10,2026-07-04,active,13,3,3835000,172.3
+AGR-014,DEV-007,CMP-009,Platinum Sponsorship — Dubai Real Estate Week,Platinum,5900000,2026-04-11,2027-11-07,active,5,1,4661000,103.3
+AGR-015,DEV-010,CMP-003,Platinum Sponsorship — Smart & Sustainable Homes Campaign,Category,3100000,2024-03-31,2025-09-11,expired,10,8,3100000,25
+AGR-016,DEV-010,CMP-010,Gold Sponsorship — Branded Residences Showcase,Gold,3400000,2026-05-03,2027-02-26,active,7,7,1564000,12.1
+AGR-017,DEV-013,CMP-013,Strategic Sponsorship — IPS London — Dubai Stand,Silver,900000,2026-02-08,2026-12-03,active,11,11,477000,61.5
+AGR-018,DEV-014,CMP-015,Gold Sponsorship — Family Communities Promotion,Platinum,2900000,2026-02-10,2026-08-25,active,4,1,1508000,116.5
+AGR-019,DEV-014,CMP-007,Category Sponsorship — MIPIM Cannes — Dubai Delegation,Platinum,800000,2024-08-24,2025-07-04,expired,9,7,800000,174.7
+AGR-020,DEV-014,CMP-011,Strategic Sponsorship — PropTech Innovation Challenge,Gold,6400000,2026-03-12,2028-02-12,pending_signature,14,8,4160000,85.7
+AGR-021,DEV-015,CMP-006,Category Sponsorship — Ramadan Real Estate Offers,Platinum,4100000,2025-09-17,2027-09-04,pending_signature,4,1,1640000,28.6
+AGR-022,DEV-015,CMP-007,Category Sponsorship — MIPIM Cannes — Dubai Delegation,Gold,6200000,2024-08-20,2026-02-10,expired,4,4,6200000,39.1
+AGR-023,DEV-016,CMP-008,Silver Sponsorship — Off-Plan Transparency Initiative,Category,900000,2024-05-26,2026-05-14,expired,8,6,900000,187.5
+AGR-024,DEV-016,CMP-009,Category Sponsorship — Dubai Real Estate Week,Category,4400000,2026-03-13,2028-01-24,active,4,4,1980000,77.7
+AGR-025,DEV-019,CMP-005,Category Sponsorship — First-Time Buyer Enablement Programme,Category,5300000,2025-07-31,2026-03-23,expired,11,9,5300000,122.1
+AGR-026,DEV-019,CMP-006,Gold Sponsorship — Ramadan Real Estate Offers,Silver,7700000,2025-10-02,2027-04-30,active,7,3,5852000,28.5
+AGR-027,DEV-020,CMP-012,Gold Sponsorship — Sustainable Communities Awards,Platinum,5200000,2026-01-29,2027-07-21,active,14,13,1664000,86.4
+AGR-028,DEV-021,CMP-007,Strategic Sponsorship — MIPIM Cannes — Dubai Delegation,Platinum,4700000,2024-09-06,2026-06-01,expired,12,12,4700000,-0.5
+AGR-029,DEV-021,CMP-009,Silver Sponsorship — Dubai Real Estate Week,Silver,600000,2026-05-04,2027-10-29,active,10,4,438000,50.3
+AGR-030,DEV-022,CMP-010,Gold Sponsorship — Branded Residences Showcase,Category,5200000,2026-03-08,2027-02-12,active,12,4,2808000,50.6
+AGR-031,DEV-023,CMP-010,Silver Sponsorship — Branded Residences Showcase,Gold,8400000,2026-02-28,2026-12-02,active,11,2,3696000,16.5
+AGR-032,DEV-023,CMP-003,Category Sponsorship — Smart & Sustainable Homes Campaign,Platinum,7400000,2024-05-20,2025-07-11,expired,12,11,7400000,177.8
+AGR-033,DEV-028,CMP-019,Strategic Sponsorship — Dubai South Growth Corridor,Platinum,2700000,2026-04-16,2028-01-20,active,8,7,1647000,9

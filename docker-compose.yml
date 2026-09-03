@@ -1,0 +1,14 @@
+# `docker compose up -d` on a Hostinger VPS. Put a reverse proxy (see
+# deploy/nginx.conf) in front of it to terminate TLS on your domain.
+services:
+  dld-platform:
+    build: .
+    image: dld-platform:latest
+    container_name: dld-platform
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      HOST: 0.0.0.0
+      PORT: 5061
+    ports:
+      - "127.0.0.1:5061:5061"

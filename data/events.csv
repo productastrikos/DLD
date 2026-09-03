@@ -1,0 +1,15 @@
+event_id,title,type,venue,description,status,lng,lat,start_date,end_date,capacity,registered,target_partners,budget_aed,footfall,leads_generated,media_value_aed,satisfaction
+EVT-001,Dubai Property Festival 2026,exhibition,Dubai World Trade Centre,Flagship three-day exhibition connecting Dubai inventory with global investors.,completed,55.287,25.2255,2025-12-22,2025-12-25,18538,15572,8,4600000,20577,3552,4000000,4.42
+EVT-002,Cityscape Global — Dubai Pavilion,exhibition,Dubai Exhibition Centre,Unified national pavilion hosting participating developers under one identity.,completed,55.149,24.96,2026-03-24,2026-03-29,4747,3750,12,6500000,5032,3654,7300000,4.32
+EVT-003,Investor Confidence Summit,summit,Atlantis The Royal,"Closed-door summit convening developers, lenders and regulators.",completed,55.117,25.131,2026-05-03,2026-05-04,1392,1016,16,800000,1448,2697,4600000,4.52
+EVT-004,Sustainable Communities Awards,awards,Museum of the Future,Annual recognition programme for low-carbon master communities.,completed,55.282,25.219,2026-01-07,2026-01-09,1159,1020,16,4700000,869,4520,5900000,4.36
+EVT-005,Dubai Real Estate Week,exhibition,Madinat Jumeirah,"Week-long programme of launches, panels and investor briefings.",completed,55.1855,25.133,2026-02-26,2026-03-02,17480,15208,17,2200000,13285,1057,9200000,4.71
+EVT-006,PropTech Innovation Challenge,conference,Area 2071,Developer-backed challenge sourcing proptech for the emirate.,completed,55.282,25.22,2025-09-24,2025-09-25,1161,836,22,3800000,1207,519,3000000,3.93
+EVT-007,Golden Visa Investor Roadshow,roadshow,Dubai World Trade Centre,Roadshow promoting property-linked residency across GCC capitals.,live,55.287,25.2255,2026-06-15,2026-06-23,408,261,13,2000000,0,0,0,0
+EVT-008,Branded Residences Forum,conference,Dubai Opera,Forum positioning Dubai as the capital of branded residences.,confirmed,55.274,25.194,2026-07-23,2026-07-25,382,206,9,6400000,0,0,0,0
+EVT-009,Off-Plan Transparency Briefing,conference,Dubai World Trade Centre,Regulator briefing on the standardised off-plan disclosure pack.,confirmed,55.287,25.2255,2026-07-05,2026-07-07,715,215,12,6500000,0,0,0,0
+EVT-010,Family Communities Expo,exhibition,Coca-Cola Arena,Consumer expo for school-adjacent family master communities.,confirmed,55.296,25.188,2026-09-14,2026-09-17,17825,2852,20,1200000,0,0,0,0
+EVT-011,Q3 Launch Window Coordination,summit,Area 2071,Working session synchronising Q3 launch dates across developers.,confirmed,55.282,25.22,2026-07-26,2026-07-27,696,466,14,4400000,0,0,0,0
+EVT-012,Heritage District Showcase,exhibition,Madinat Jumeirah,Showcase of restored heritage-adjacent residential stock.,confirmed,55.1855,25.133,2026-07-12,2026-07-15,23476,11503,23,2300000,0,0,0,0
+EVT-013,Green Retrofit Alliance Assembly,summit,Museum of the Future,Assembly funding retrofits across ageing residential towers.,planning,55.282,25.219,2027-02-13,2027-02-14,1077,323,9,5900000,0,0,0,0
+EVT-014,Real Estate Media Partners Day,conference,Dubai Opera,Coordination day for the DLD-masthead media partnership.,planning,55.274,25.194,2026-12-19,2026-12-21,952,152,17,2700000,0,0,0,0
