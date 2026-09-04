@@ -1,7 +1,10 @@
 node_modules
-dist
 .DS_Store
 *.log
+
+# /dist is committed on purpose. The build tooling lives in devDependencies, so
+# a production install on the host has no Vite to run — the built SPA has to
+# arrive with the code. Rebuild with `npm run build` and commit the result.
 
 # Local environment overrides — .env.example is the committed template.
 .env

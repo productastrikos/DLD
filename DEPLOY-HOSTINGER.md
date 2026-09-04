@@ -1,130 +1,99 @@
 # Deploying to Hostinger
 
 The platform is **one Node process**. Express serves the API under `/api` and
-the built React SPA from `/dist` on the same origin, so there is no CORS
-configuration, no second service, and no database to provision — the CSV
-datasets in `/data` ship with the repository and are read into memory at boot.
+the built React SPA from `/dist` on the same origin — no database, no second
+service, no CORS to configure. The CSV datasets in `/data` and the built SPA in
+`/dist` both ship with the repository, so **the server installs two packages and
+starts. It does not build anything.**
 
-That shape decides the hosting: **the app needs a Node runtime.** A pure
-static/PHP plan cannot run it (see [Static-only hosting](#static-only-hosting)).
-
-| Hostinger product | Works | How |
-|---|---|---|
-| **VPS** | ✅ Recommended | [Docker](#option-a-vps-with-docker) or [PM2 + Nginx](#option-b-vps-with-pm2--nginx) |
-| **Shared / Cloud with a Node.js app in hPanel** | ✅ | [hPanel Node.js](#option-c-hpanel-nodejs-application) |
-| **Shared hosting, static files only** | ⚠️ Partial | [Static-only hosting](#static-only-hosting) |
-
-Whichever route you take, two things are constant:
+Two constants, whichever way you deploy:
 
 * **Startup file:** `app.js` at the repository root.
-* **Port:** the app reads `PORT` (falling back to `API_PORT`, then `5061`) and
-  binds `HOST`, default `0.0.0.0`. Never hard-code a port into a proxy config
-  without setting the matching environment variable.
+* **Port:** the app reads `PORT` (falling back to `API_PORT`, then `5061`).
+  Leave `HOST` unset — see [Why HOST stays unset](#why-host-stays-unset).
 
 Health check: `GET /api/health` returns `{"status":"ok", ...}`.
 
 ---
 
-## Option A — VPS with Docker
+## hPanel Node.js application
 
-Hostinger VPS plans can be provisioned with the Docker or Coolify template.
+This is the route for a shared or Cloud plan, and the one to use unless you have
+a specific reason not to.
 
-```bash
-git clone https://github.com/productastrikos/DLD.git dld-platform
-cd dld-platform
-docker compose up -d --build
-```
-
-The container binds `127.0.0.1:5061` only, so put Nginx in front of it for TLS:
-
-```bash
-sudo cp deploy/nginx.conf /etc/nginx/sites-available/dld-platform
-sudo sed -i 's/your-domain.com/YOURDOMAIN/g' /etc/nginx/sites-available/dld-platform
-sudo ln -s /etc/nginx/sites-available/dld-platform /etc/nginx/sites-enabled/
-sudo nginx -t && sudo systemctl reload nginx
-sudo certbot --nginx -d YOURDOMAIN -d www.YOURDOMAIN
-```
-
-Redeploy after a push:
-
-```bash
-git pull && docker compose up -d --build
-```
-
-## Option B — VPS with PM2 + Nginx
-
-No Docker. Install Node 20 (`nvm install 20`), then:
-
-```bash
-git clone https://github.com/productastrikos/DLD.git /var/www/dld-platform
-cd /var/www/dld-platform
-npm ci
-npm run build          # writes /dist — required, the SPA is not committed
-npm i -g pm2
-pm2 start ecosystem.config.cjs
-pm2 save && pm2 startup
-```
-
-Then the same Nginx + certbot steps as Option A.
-
-`deploy/dld-platform.service` is there if you would rather use systemd than PM2;
-it expects the checkout at `/var/www/dld-platform`.
-
-Redeploy: `git pull && npm ci && npm run build && pm2 restart dld-platform`.
-
-## Option C — hPanel Node.js application
-
-If your plan exposes **Advanced → Node.js** in hPanel:
-
-1. **Create application**
+1. **hPanel → Advanced → Node.js → Create application**
    * Node version: **20** (18.18+ works; see `.nvmrc`)
-   * Application root: the directory you deploy into, e.g. `dld-platform`
+   * Application root: e.g. `dld-platform`
    * Application URL: your domain or subdomain
    * **Application startup file: `app.js`**
-2. Deploy the code into the application root — hPanel's Git integration
+2. **Deploy the code** into that application root — hPanel's Git integration
    pointed at `https://github.com/productastrikos/DLD.git`, or SSH/SFTP.
 3. **Run NPM Install** from the application panel.
-4. Build the SPA. `/dist` is deliberately not committed, so it must be produced
-   on the server: use the panel's *Run JS script* action on **`build`**, or over
-   SSH `cd ~/dld-platform && npm run build`.
-5. **Restart** the application, then open `https://yourdomain/api/health`.
+4. **Restart** the application.
+5. Open `https://yourdomain/api/health`. You should get JSON.
 
-Notes for this environment:
+There is no build step. `/dist` is committed precisely so that this list has
+four steps instead of six, and so that nothing has to compile inside a shared
+container.
 
-* Passenger injects `PORT` and intercepts `listen()` — do not set a port
-  manually in hPanel's environment variables.
-* If the build step runs out of memory, build locally and upload `dist/`
-  alongside the code; nothing else about the deployment changes.
-* hPanel writes its own `public_html/.htaccess` with the Passenger directives.
-  Leave it alone — the `.htaccess` in this repo only ever lands inside `dist/`.
+### Environment variables
 
----
+Set none. The defaults are correct for hPanel:
 
-## Static-only hosting
-
-You *can* upload just `dist/` to `public_html` on a plain shared plan — the
-bundled `.htaccess` handles SPA deep links, compression, and cache headers — but
-**understand what breaks**: every screen loads its data from `/api`, so with no
-Node process behind it the app renders its shell and then fails to load. The
-workflow demos (submitting a participation request, approving one, launching a
-campaign) are server-side mutations and cannot work at all.
-
-Use this only to preview the front-end shell. For a working demo, point the
-static site at a Node instance running elsewhere, or use Options A–C.
-
----
-
-## Environment variables
-
-Copy `.env.example` for reference. Nothing is secret; the app has no external
-dependencies, no API keys, and no database credentials.
-
-| Variable | Default | Purpose |
+| Variable | Default | Notes |
 |---|---|---|
-| `PORT` | `5061` | Listen port. Set by Hostinger/Passenger automatically. |
-| `HOST` | `0.0.0.0` | Bind interface. Must stay `0.0.0.0` behind a proxy or in Docker. |
-| `NODE_ENV` | — | Set to `production` on a server. |
-| `API_PORT` | `5061` | Local development only, used by `npm run dev`. |
+| `PORT` | `5061` | Passenger injects this. **Do not set it manually.** |
+| `HOST` | *unset* | Leave it unset here. See below. |
+| `NODE_ENV` | — | `production` is a reasonable thing to add; nothing depends on it. |
+
+### Why HOST stays unset
+
+Passenger — the runtime behind hPanel's Node.js application — hands the process
+its own listening socket and patches `listen()` to use it. The single-argument
+form, `app.listen(PORT)`, is the one it intercepts cleanly. Passing an explicit
+interface alongside it can leave the app bound somewhere Passenger is not
+proxying to, and the front end reports that as a **504**.
+
+So `server/index.js` binds an interface *only* when `HOST` is set in the
+environment. Hostinger does not set it, so the app uses the Passenger-friendly
+form. With `HOST` unset Node listens on every interface anyway, so nothing loses
+reachability — the Docker image and the PM2/systemd units set `HOST=0.0.0.0`
+explicitly for their own reasons.
+
+---
+
+## Updating a deployment
+
+```bash
+git pull
+```
+
+Then **Restart** in hPanel. Run *Run NPM Install* again only if
+`package.json` changed.
+
+Because the SPA is a commit artifact, changing anything under `client/` means
+rebuilding **on your machine** before pushing:
+
+```bash
+npm install
+npm run build
+git add dist && git commit -m "Rebuild SPA" && git push
+```
+
+Forget this and the API updates while the UI stays on the previous version.
+
+---
+
+## Troubleshooting
+
+| Symptom | Cause |
+|---|---|
+| **504 / 502 on every URL** | The Node process is not running or Passenger cannot reach it. Check the application log in hPanel. Usual causes: NPM Install was never run or failed, the startup file is not `app.js`, or a `HOST`/`PORT` variable was set by hand — remove them. |
+| `Cannot listen on port … EADDRINUSE` in the log | Another process holds the port. On hPanel this means `PORT` was set manually; unset it and restart. |
+| Shell loads, every panel errors | `/api` is not reachable — a static-only deploy with no Node process behind it. Check `/api/health`. |
+| `No /dist build found` in the log | `dist/` did not reach the server. It is committed, so this means an incomplete upload — FTP clients routinely skip it. |
+| 404 on refresh of a deep link | Express handles the SPA fallback when it serves `dist`. If something else is fronting the files, confirm `dist/.htaccess` was uploaded — it is a dotfile and many FTP clients hide it. |
+| Old UI after a deploy | Either `index.html` is cached upstream (the app sends `no-cache`; purge the CDN), or `dist/` was never rebuilt and committed. |
 
 ## Data and persistence
 
@@ -134,12 +103,21 @@ for the life of the process and vanish on restart. That is intentional for a POC
 and means a redeploy always returns to the same clean baseline. If a demo needs
 to survive restarts, that is the point at which a real database goes in.
 
-## Troubleshooting
+---
 
-| Symptom | Cause |
-|---|---|
-| Shell loads, every panel errors | `/api` is not reachable — the Node process is down, or a static-only deploy. Check `/api/health`. |
-| 404 on refresh of a deep link | SPA fallback missing — Express handles it when it serves `dist`; on Apache/LiteSpeed confirm `.htaccess` was uploaded (it is a dotfile; many FTP clients hide it). |
-| `No /dist build found` in the logs | `npm run build` has not been run on the server. |
-| Old UI after a deploy | `index.html` is being cached upstream. Purge the CDN/browser cache; the app itself sends `no-cache` for the shell. |
-| Port already in use | Another process holds `PORT`; on a VPS check `pm2 list` / `docker ps`. |
+## Other targets
+
+Not needed for Hostinger shared/Cloud hosting. Kept because they still work.
+
+**VPS with Docker** — `docker compose up -d --build`. The container binds
+`127.0.0.1:5061`; put `deploy/nginx.conf` in front of it for TLS
+(`certbot --nginx -d YOURDOMAIN`). The image builds the SPA itself, so it does
+not depend on the committed `dist/`.
+
+**VPS with PM2** — `npm ci && npm i -g pm2 && pm2 start ecosystem.config.cjs`,
+then the same Nginx step. `deploy/dld-platform.service` is the systemd
+equivalent and expects the checkout at `/var/www/dld-platform`.
+
+**Static-only** — uploading just `dist/` to `public_html` renders the shell and
+then fails to load every screen, because there is no `/api` behind it. Use it to
+preview the front end, nothing more.

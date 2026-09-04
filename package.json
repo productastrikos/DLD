@@ -18,10 +18,14 @@
     "npm": ">=9"
   },
   "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
     "@vitejs/plugin-react": "^4.3.1",
     "autoprefixer": "^10.4.19",
-    "cors": "^2.8.5",
-    "express": "^4.19.2",
+    "concurrently": "^8.2.2",
+    "cross-env": "^7.0.3",
     "leaflet": "^1.9.4",
     "leaflet.markercluster": "^1.5.3",
     "postcss": "^8.4.39",
@@ -31,9 +35,5 @@
     "recharts": "^2.12.7",
     "tailwindcss": "^3.4.6",
     "vite": "^5.4.10"
-  },
-  "devDependencies": {
-    "concurrently": "^8.2.2",
-    "cross-env": "^7.0.3"
   }
 }

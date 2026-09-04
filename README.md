@@ -285,16 +285,22 @@ separation across all pairs, and contrast:
 
 ## Deployment
 
-One Node process serves both the API and the built SPA on a single origin, so
-production is `npm ci && npm run build && npm start` — no database, no second
-service, no CORS to configure. The startup file is `app.js`; the port comes from
-`PORT` (default `5061`) and the bind address from `HOST` (default `0.0.0.0`).
-`GET /api/health` is the liveness probe.
+One Node process serves both the API and the built SPA on a single origin — no
+database, no second service, no CORS to configure. The startup file is `app.js`
+and `GET /api/health` is the liveness probe.
 
-Because the app needs a Node runtime, a static-only plan cannot run it.
-**[DEPLOY-HOSTINGER.md](DEPLOY-HOSTINGER.md)** covers the routes that work —
-VPS with Docker, VPS with PM2 + Nginx, and an hPanel Node.js application — plus
-what breaks if you upload only the static build.
+**The host does not build anything.** `/dist` is committed, and the only runtime
+dependencies are `express` and `cors`; Vite, React and the rest are
+devDependencies. A production install is two packages, which is what makes this
+deployable on a shared plan. The trade is that the build is a commit artifact —
+after changing anything under `client/`, run `npm run build` and commit `dist/`
+or the deployed UI stays on the previous version.
+
+Port comes from `PORT` (default `5061`). `HOST` is deliberately unset by
+default: Passenger supplies its own socket and only wants `listen(PORT)`, while
+Docker and the PM2/systemd units set `HOST=0.0.0.0` themselves.
+
+**[DEPLOY-HOSTINGER.md](DEPLOY-HOSTINGER.md)** is the step-by-step.
 
 Note that mutations are held in memory on top of the CSV baseline, so a restart
 returns the demo to its clean starting state.

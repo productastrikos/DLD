@@ -1566,7 +1566,25 @@ if (fs.existsSync(DIST)) {
    injects, API_PORT is the local dev convention. */
 app.set('trust proxy', true);
 const PORT = process.env.PORT || process.env.API_PORT || 5061;
-const HOST = process.env.HOST || '0.0.0.0';
-app.listen(PORT, HOST, () => console.log(`DLD platform → http://${HOST}:${PORT}`));
+
+/* Passenger — the runtime behind hPanel's Node.js application — hands the
+   process its own listening socket and patches listen() to use it. The
+   single-argument form is the one it reliably intercepts; passing an explicit
+   interface alongside it can leave the app bound somewhere Passenger is not
+   proxying to, and the front end reports that as a 504. So only bind an
+   interface when something actually asked for one: Docker and the PM2/systemd
+   units set HOST=0.0.0.0 themselves, Hostinger does not. With HOST unset Node
+   listens on every interface anyway, so nothing else loses reachability. */
+const HOST = process.env.HOST;
+const announce = () => console.log(`DLD platform → http://${HOST || 'localhost'}:${PORT}`);
+const server = HOST ? app.listen(PORT, HOST, announce) : app.listen(PORT, announce);
+
+/* A bind failure must say so. Left unhandled it is an unhelpful stack trace in
+   a log nobody reads, and the only symptom anyone sees is the gateway timing
+   out against a process that died on startup. */
+server.on('error', (err) => {
+  console.error(`Cannot listen on ${HOST ? HOST + ':' : 'port '}${PORT} — ${err.code}: ${err.message}`);
+  process.exit(1);
+});
 
 module.exports = app;

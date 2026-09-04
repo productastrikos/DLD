@@ -1,6 +1,5 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import path from 'path';
 
 export default defineConfig({
   root: 'client',
@@ -13,7 +12,10 @@ export default defineConfig({
     },
   },
   build: {
-    outDir: path.resolve(process.cwd(), 'dist'),
+    // Resolved against `root` (client/), so the build always lands in <repo>/dist
+    // regardless of which directory `vite build` was invoked from. Anchoring it
+    // to process.cwd() instead put dist wherever the caller happened to be.
+    outDir: '../dist',
     emptyOutDir: true,
   },
 });
