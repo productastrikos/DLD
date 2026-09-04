@@ -1,3 +1,6 @@
+/* Ported verbatim from the Express server (server/lib/) — pure logic over the
+   in-memory dataset, with no Node dependency. Only the export syntax changed. */
+
 /**
  * AI intelligence layer — Real Estate Developer Connectivity Platform.
  *
@@ -987,7 +990,7 @@ function compact(n) {
 }
 const aed = (n) => `AED ${compact(n)}`;
 
-module.exports = {
+export {
   answer, simulate, matchPartners, anomalies, digest, portfolioHealth,
   SUGGESTIONS,
 };

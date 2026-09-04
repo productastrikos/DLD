@@ -1,86 +1,81 @@
 # Deploying to Hostinger
 
-The platform is **one Node process**. Express serves the API under `/api` and
-the built React SPA from `/dist` on the same origin — no database, no second
-service, no CORS to configure. The CSV datasets in `/data` and the built SPA in
-`/dist` both ship with the repository, so **the server installs two packages and
-starts. It does not build anything.**
+The platform is a **static site**. There is no Node process, no port, no
+database, and nothing to keep running — `dist/` is a folder of files that any
+web host can serve.
 
-Two constants, whichever way you deploy:
+That is the whole deployment:
 
-* **Startup file:** `app.js` at the repository root.
-* **Port:** the app reads `PORT` (falling back to `API_PORT`, then `5061`).
-  Leave `HOST` unset — see [Why HOST stays unset](#why-host-stays-unset).
+> **Upload the contents of `dist/` into `public_html`.**
 
-Health check: `GET /api/health` returns `{"status":"ok", ...}`.
+`dist/` is committed, so you do not have to build anything to deploy. If you
+would rather build it yourself: `npm install && npm run build`.
 
 ---
 
-## hPanel Node.js application
+## hPanel File Manager
 
-This is the route for a shared or Cloud plan, and the one to use unless you have
-a specific reason not to.
+1. **hPanel → Files → File Manager**, open `public_html`.
+2. Delete whatever is in there (typically Hostinger's placeholder `index.html`).
+3. Upload **the contents of `dist/`** — `index.html`, `assets/`, `brand/` and
+   the dotfile `.htaccess`. Upload the *contents*, not the `dist` folder itself,
+   or the site lands at `/dist/`.
+4. Open your domain.
 
-1. **hPanel → Advanced → Node.js → Create application**
-   * Node version: **20** (18.18+ works; see `.nvmrc`)
-   * Application root: e.g. `dld-platform`
-   * Application URL: your domain or subdomain
-   * **Application startup file: `app.js`**
-2. **Deploy the code** into that application root — hPanel's Git integration
-   pointed at `https://github.com/productastrikos/DLD.git`, or SSH/SFTP.
-3. **Run NPM Install** from the application panel.
-4. **Restart** the application.
-5. Open `https://yourdomain/api/health`. You should get JSON.
+The quickest way to move the files is to zip the *contents* of `dist/`, upload
+the one zip, and use File Manager's **Extract**.
 
-There is no build step. `/dist` is committed precisely so that this list has
-four steps instead of six, and so that nothing has to compile inside a shared
-container.
+> `.htaccess` is a dotfile. Many FTP clients hide it by default and silently
+> skip it. It is not required for the app to work — see below — but it supplies
+> compression and cache headers, so it is worth getting across.
 
-### Environment variables
+## Over FTP or SSH
 
-Set none. The defaults are correct for hPanel:
+Same thing: copy `dist/*` into `public_html`. Nothing else from the repository
+needs to be on the server — not `node_modules`, not `data/`, not `client/`.
 
-| Variable | Default | Notes |
-|---|---|---|
-| `PORT` | `5061` | Passenger injects this. **Do not set it manually.** |
-| `HOST` | *unset* | Leave it unset here. See below. |
-| `NODE_ENV` | — | `production` is a reasonable thing to add; nothing depends on it. |
+## Deploying to a subfolder
 
-### Why HOST stays unset
-
-Passenger — the runtime behind hPanel's Node.js application — hands the process
-its own listening socket and patches `listen()` to use it. The single-argument
-form, `app.listen(PORT)`, is the one it intercepts cleanly. Passing an explicit
-interface alongside it can leave the app bound somewhere Passenger is not
-proxying to, and the front end reports that as a **504**.
-
-So `server/index.js` binds an interface *only* when `HOST` is set in the
-environment. Hostinger does not set it, so the app uses the Passenger-friendly
-form. With `HOST` unset Node listens on every interface anyway, so nothing loses
-reachability — the Docker image and the PM2/systemd units set `HOST=0.0.0.0`
-explicitly for their own reasons.
+It works with no changes. The build uses relative asset paths and hash-based
+routing, so `public_html/demo/` serves correctly at
+`https://yourdomain/demo/`.
 
 ---
 
-## Updating a deployment
+## Why there is nothing to configure
 
-```bash
-git pull
-```
+**No Node runtime.** The API that used to run in Express now runs in the
+browser, over datasets bundled into the JavaScript at build time. So there is no
+`app.js`, no startup file, no `PORT`, no NPM Install step, and no application to
+restart — which also means there is no process that can fail to start and leave
+you looking at a 502, 503 or 504.
 
-Then **Restart** in hPanel. Run *Run NPM Install* again only if
-`package.json` changed.
+**No rewrite rules.** Routing lives in the URL hash
+(`/#/dld/dashboard`), so every request the host ever sees is for `/index.html`
+or a real file in `assets/`. Refreshing a deep link cannot 404, and the app does
+not care whether it is at a domain root or in a subfolder.
 
-Because the SPA is a commit artifact, changing anything under `client/` means
-rebuilding **on your machine** before pushing:
+The `.htaccess` shipped in `dist/` therefore only sets compression, cache
+headers and a few security headers. If your plan ignores it, the site still
+works.
+
+---
+
+## Updating the site
+
+The build is a commit artifact, so rebuild it whenever anything under `client/`
+or `data/` changes:
 
 ```bash
 npm install
 npm run build
-git add dist && git commit -m "Rebuild SPA" && git push
 ```
 
-Forget this and the API updates while the UI stays on the previous version.
+Then re-upload `dist/`, and commit it so the repository and the live site agree:
+
+```bash
+git add dist && git commit -m "Rebuild SPA" && git push
+```
 
 ---
 
@@ -88,36 +83,21 @@ Forget this and the API updates while the UI stays on the previous version.
 
 | Symptom | Cause |
 |---|---|
-| **504 / 502 on every URL** | The Node process is not running or Passenger cannot reach it. Check the application log in hPanel. Usual causes: NPM Install was never run or failed, the startup file is not `app.js`, or a `HOST`/`PORT` variable was set by hand — remove them. |
-| `Cannot listen on port … EADDRINUSE` in the log | Another process holds the port. On hPanel this means `PORT` was set manually; unset it and restart. |
-| Shell loads, every panel errors | `/api` is not reachable — a static-only deploy with no Node process behind it. Check `/api/health`. |
-| `No /dist build found` in the log | `dist/` did not reach the server. It is committed, so this means an incomplete upload — FTP clients routinely skip it. |
-| 404 on refresh of a deep link | Express handles the SPA fallback when it serves `dist`. If something else is fronting the files, confirm `dist/.htaccess` was uploaded — it is a dotfile and many FTP clients hide it. |
-| Old UI after a deploy | Either `index.html` is cached upstream (the app sends `no-cache`; purge the CDN), or `dist/` was never rebuilt and committed. |
+| Hostinger's default placeholder page | `public_html` still holds the stock `index.html`. Delete it and upload the build. |
+| Site appears at `/dist/` | The `dist` folder was uploaded instead of its contents. Move the files up one level. |
+| Blank page, console 404s for `/assets/...` | Only `index.html` was uploaded. `assets/` has to come too. |
+| Styling missing, page otherwise fine | Partial upload — re-upload `assets/` in full. |
+| Changes not showing after re-upload | The browser cached the shell. Hard-refresh; `.htaccess` sends `no-cache` for `index.html` when the host honours it. |
+| Everything loads but data looks stale | `dist/` was not rebuilt after `data/` changed. The datasets are baked into the bundle at build time. |
 
 ## Data and persistence
 
-`/data/*.csv` is the system of record and is read into memory at startup.
-Mutations made through the UI are applied **in memory only** — they are visible
-for the life of the process and vanish on restart. That is intentional for a POC
-and means a redeploy always returns to the same clean baseline. If a demo needs
-to survive restarts, that is the point at which a real database goes in.
+`/data/*.csv` is the system of record. `npm run generate` writes it, and
+`npm run build` inlines it into the bundle.
 
----
-
-## Other targets
-
-Not needed for Hostinger shared/Cloud hosting. Kept because they still work.
-
-**VPS with Docker** — `docker compose up -d --build`. The container binds
-`127.0.0.1:5061`; put `deploy/nginx.conf` in front of it for TLS
-(`certbot --nginx -d YOURDOMAIN`). The image builds the SPA itself, so it does
-not depend on the committed `dist/`.
-
-**VPS with PM2** — `npm ci && npm i -g pm2 && pm2 start ecosystem.config.cjs`,
-then the same Nginx step. `deploy/dld-platform.service` is the systemd
-equivalent and expects the checkout at `/var/www/dld-platform`.
-
-**Static-only** — uploading just `dist/` to `public_html` renders the shell and
-then fails to load every screen, because there is no `/api` behind it. Use it to
-preview the front end, nothing more.
+Every visitor's browser gets its own copy in memory, so the create and approve
+workflows are real but private to that tab, and a refresh returns to the clean
+baseline. The Express version behaved the same way — it never persisted either,
+it just held the copy server-side. If a demo needs mutations to survive a
+refresh or be visible to someone else, that is the point at which a real backend
+goes in.

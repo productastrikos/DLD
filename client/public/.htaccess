@@ -1,17 +1,16 @@
-# Copied into /dist by Vite. Only Apache/LiteSpeed reads it — when the Node
-# process serves the build itself (the normal deployment) it is inert, and
-# Express applies the equivalent rules in server/index.js.
+# Optional. The app does not need it.
 #
-# It matters when a Hostinger shared-hosting account fronts the build with
-# LiteSpeed: without the rewrite below, a deep link like /dld/dashboard is a
-# 404 because only /index.html exists on disk.
+# Routing lives in the URL hash, so every request a host sees is for /index.html
+# or a real file under /assets — there is no deep link to rewrite and nothing
+# here is load-bearing. What it does add, on Apache/LiteSpeed (Hostinger shared
+# hosting), is compression, correct cache lifetimes and a few security headers.
+#
+# The rewrite below is kept only as a safety net for anyone who switches the app
+# back to path-based routing.
 
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
-
-  # Never rewrite the API — it must reach Node, not the SPA shell.
-  RewriteRule ^api/ - [L]
 
   # Anything that exists on disk is served as-is; everything else is a
   # client-side route and gets the SPA shell.

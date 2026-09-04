@@ -5,6 +5,7 @@ import { LangToggle, useI18n } from '../i18n';
 import { homeFor } from '../components/Layout';
 import { CoBrandLockup, AstrikosMark, COMPANY } from '../components/Brand';
 import { IcoLock, IcoBuilding, IcoChart } from '../components/icons';
+import { request } from '../api/index.js';
 
 /* Dubai skyline photography. Unsplash's source CDN serves these directly, and
    a gradient scrim over the top keeps the brand palette dominant so the photo
@@ -33,8 +34,7 @@ export default function Login({ onLogin }) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch('/api/auth/developers')
-      .then((r) => r.json())
+    request('/api/auth/developers')
       .then((d) => setDevelopers(d.developers || []))
       .catch(() => {});
   }, []);
@@ -42,12 +42,7 @@ export default function Login({ onLogin }) {
   async function submit(payload) {
     setErr(null); setBusy(true);
     try {
-      const res = await fetch('/api/auth/login', {
-        method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-      });
-      if (!res.ok) throw new Error((await res.json()).error || 'Login failed');
-      const user = await res.json();
+      const user = await request('/api/auth/login', { method: 'POST', body: payload });
       onLogin(user);
       navigate(homeFor(user));
     } catch (e) { setErr(String(e.message || e)); setBusy(false); }

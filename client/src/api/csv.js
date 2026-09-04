@@ -1,7 +1,9 @@
-/** Minimal CSV reader — parses the generated datasets into arrays of objects. */
-const fs = require('fs');
-const path = require('path');
-
+/** Minimal CSV reader — parses the generated datasets into arrays of objects.
+ *
+ *  Ported from the Express server unchanged except for dropping the fs-backed
+ *  loadTable(): the browser receives each dataset as a bundled string instead
+ *  of a file path. The parsing and numeric-coercion rules are identical, so a
+ *  row reads the same here as it did server-side. */
 function parseCSV(text) {
   const rows = [];
   let inQ = false, row = [''];
@@ -34,8 +36,4 @@ function parseCSV(text) {
   });
 }
 
-function loadTable(dataDir, name) {
-  return parseCSV(fs.readFileSync(path.join(dataDir, `${name}.csv`), 'utf8'));
-}
-
-module.exports = { parseCSV, loadTable };
+export { parseCSV };

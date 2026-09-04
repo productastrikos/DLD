@@ -1,3 +1,6 @@
+/* Ported verbatim from the Express server (server/lib/) — pure logic over the
+   in-memory dataset, with no Node dependency. Only the export syntax changed. */
+
 /**
  * Screen content that is derived rather than authored.
  *
@@ -756,4 +759,5 @@ function qaPairs(module) {
   return M[module] || M.dashboard;
 }
 
-module.exports = { kpiDetail, advisories, qaPairs, KPI_IDS: Object.keys(KPI) };
+export { kpiDetail, advisories, qaPairs };
+export const KPI_IDS = Object.keys(KPI);

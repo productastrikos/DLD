@@ -1,4 +1,5 @@
 import { useEffect, useState, useCallback } from 'react';
+import { request } from '../api/index.js';
 
 export const AUTH_KEY = 'dld_auth';
 
@@ -15,20 +16,16 @@ export function withScope(path) {
   return path + (path.includes('?') ? '&' : '?') + `developer=${encodeURIComponent(u.developer_id)}`;
 }
 
+/* Both of these used to be fetch() calls to an Express server. The platform is
+   a static SPA now and answers its own requests in-tab — see ../api/. The
+   signatures are unchanged, so every caller and every loading state still
+   works the way it did. */
 export async function fetchApi(path) {
-  const res = await fetch(`/api${withScope(path)}`);
-  if (!res.ok) throw new Error(`API ${path} → ${res.status}`);
-  return res.json();
+  return request(`/api${withScope(path)}`);
 }
 
 export async function postApi(path, body, method = 'POST') {
-  const res = await fetch(`/api${path}`, {
-    method,
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(body || {}),
-  });
-  if (!res.ok) throw new Error((await res.json().catch(() => ({}))).error || `API ${path} → ${res.status}`);
-  return res.json();
+  return request(`/api${path}`, { method, body: body || {} });
 }
 
 /** Fetch-on-mount hook with loading/error state and a manual refetch. */

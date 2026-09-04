@@ -4,12 +4,13 @@ Dubai Land Department · Marketing & Communications
 
 A single-page application implementing the platform described in
 *Real Estate Developer Connectivity Platform* (see the English translations in
-the parent folder). Full-stack but self-contained: an Express API reads CSV
-datasets from `/data`, and a React SPA consumes it. No external database.
+the parent folder). A **static single-page app**: the API runs in the browser
+over CSV datasets bundled from `/data` at build time. No server, no database,
+nothing to deploy but a folder of files.
 
 ```bash
 npm install
-npm run dev        # API on :5061, client on :5174
+npm run dev
 ```
 
 Open <http://localhost:5174>.
@@ -156,7 +157,7 @@ bilingual Arabic/English. Attribution is rendered on the map as required.
 
 ## AI layer
 
-`server/lib/ai.js` is deliberately **model-free**. A hosted LLM would add
+`client/src/api/ai.js` is deliberately **model-free**. A hosted LLM would add
 fluency but also a network dependency, an API key and non-determinism — none of
 which a self-contained demo can rely on. Every answer is computed from the live
 tables, so a figure quoted by the copilot can be checked on the screen it came
@@ -187,13 +188,17 @@ health score and the digest cannot report different numbers for the same metric.
 ```
 data/                     CSV system-of-record (generated, reproducible)
 server/
-  generate/generate-data.js   seeded generator — `npm run generate`
-  lib/csv.js                  CSV reader
-  lib/ai.js                   copilot, simulator, matching, anomalies, digest
-  lib/kpi.js                  KPI register + traceability mapping
-  lib/content.js              KPI explainers, rotating advisories, Ask S!a pairs
-  index.js                    Express API + live notification stream
+  generate/generate-data.js   seeded generator — `npm run generate` (Node)
 client/src/
+  api/                        the API, running in the browser
+    routes.js                 all 38 endpoints + live notification stream
+    router.js                 minimal Express-shaped shim the routes run on
+    ai.js                     copilot, simulator, matching, anomalies, digest
+    kpi.js                    KPI register + traceability mapping
+    content.js                KPI explainers, rotating advisories, Ask S!a pairs
+    csv.js / tables.js        CSV reader and table assembly
+    datasets.js               bundles /data into the build (the only Vite-specific file)
+    clock.js                  REFERENCE_DATE
   App.jsx                     router + RBAC gate + search/KPI contexts
   theme.jsx                   light/dark tokens
   i18n.jsx                    EN/AR translation (layout stays LTR)
@@ -201,19 +206,18 @@ client/src/
   components/                 Layout, KPICard, KpiDetailModal, AdvisoryStrip,
                               AskSia, Brand, Ring, charts, TwinMap, Panels, icons
   pages/                      the fourteen screens
-  services/api.js             fetch helpers, developer scoping, formatters
+  services/api.js             API helpers, developer scoping, formatters
   services/modules.js         route → module, for advisory and assistant scoping
   services/media.js           deterministic photography per record
-app.js                    hosting entry point (Passenger / `npm start`)
-Dockerfile, docker-compose.yml, ecosystem.config.cjs
-deploy/                   nginx.conf, systemd unit
+dist/                     the built site — committed, this is what you deploy
 ```
 
 **Internet is required** for the twin's basemap tiles and the sign-in hero
 image. Everything else — all data, all intelligence — runs locally.
 
-The platform reasons from a **reference clock** (`REFERENCE_DATE`, exported by
-the generator) rather than the wall clock. Every dataset is built relative to
+The platform reasons from a **reference clock** (`REFERENCE_DATE`, in
+`client/src/api/clock.js`, which must match `TODAY` in the generator) rather
+than the wall clock. Every dataset is built relative to
 that instant, so SLA ages, inactivity windows and time-to-expiry stay coherent —
 reading `Date.now()` instead would make a freshly generated dataset look months
 stale.
@@ -235,8 +239,8 @@ approval loop stays entirely on-platform.
 
 `npm run generate` rewrites `/data` from a seeded RNG, so regeneration is
 byte-identical. Mutations made while the app runs (new requests, approvals,
-launched campaigns) are held in memory over the CSV baseline and reset on
-restart.
+launched campaigns) are held in memory over the CSV baseline, per browser tab,
+and reset on refresh.
 
 | File | Rows | Contents |
 |---|---|---|
@@ -285,25 +289,24 @@ separation across all pairs, and contrast:
 
 ## Deployment
 
-One Node process serves both the API and the built SPA on a single origin — no
-database, no second service, no CORS to configure. The startup file is `app.js`
-and `GET /api/health` is the liveness probe.
+**Upload the contents of `dist/` to `public_html`.** That is the entire
+deployment. `dist/` is committed, so nothing has to be built on the host.
 
-**The host does not build anything.** `/dist` is committed, and the only runtime
-dependencies are `express` and `cors`; Vite, React and the rest are
-devDependencies. A production install is two packages, which is what makes this
-deployable on a shared plan. The trade is that the build is a commit artifact —
-after changing anything under `client/`, run `npm run build` and commit `dist/`
-or the deployed UI stays on the previous version.
+There is no Node process, so there is no startup file, no `PORT`, no install
+step and nothing that can fail to boot. Routing lives in the URL hash, so the
+host needs no rewrite rules either and a refreshed deep link cannot 404 — the
+build works at a domain root, in a subfolder, or opened straight off disk.
 
-Port comes from `PORT` (default `5061`). `HOST` is deliberately unset by
-default: Passenger supplies its own socket and only wants `listen(PORT)`, while
-Docker and the PM2/systemd units set `HOST=0.0.0.0` themselves.
+The trade is that the build is a commit artifact: after changing anything under
+`client/` or `data/`, run `npm run build` and commit `dist/`, or the deployed
+site stays on the previous version.
 
 **[DEPLOY-HOSTINGER.md](DEPLOY-HOSTINGER.md)** is the step-by-step.
 
-Note that mutations are held in memory on top of the CSV baseline, so a restart
-returns the demo to its clean starting state.
+Note that mutations are held in memory on top of the CSV baseline — now in the
+visitor's own tab rather than in a shared server process — so a refresh returns
+the demo to its clean starting state, and two visitors never see each other's
+changes.
 
 ## Scope
 

@@ -2,15 +2,11 @@
   "name": "dld-developer-connectivity-platform",
   "version": "1.0.0",
   "private": true,
-  "description": "DLD Real Estate Developer Connectivity Platform — POC. Full-stack: Express API over CSV datasets in /data + React/Vite/Tailwind SPA.",
+  "description": "DLD Real Estate Developer Connectivity Platform — POC. Static React/Vite/Tailwind SPA; the API runs in the browser over the CSV datasets in /data.",
   "scripts": {
     "generate": "node server/generate/generate-data.js",
-    "server": "node server/index.js",
-    "client": "vite",
-    "dev": "concurrently -k -n api,web -c blue,green \"cross-env API_PORT=5061 node server/index.js\" \"vite\"",
+    "dev": "vite",
     "build": "vite build",
-    "start": "node app.js",
-    "serve": "npm run build && node app.js",
     "preview": "vite preview"
   },
   "engines": {
@@ -18,21 +14,17 @@
     "npm": ">=9"
   },
   "dependencies": {
-    "cors": "^2.8.5",
-    "express": "^4.19.2"
+    "leaflet": "^1.9.4",
+    "leaflet.markercluster": "^1.5.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.26.0",
+    "recharts": "^2.12.7"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.3.1",
     "autoprefixer": "^10.4.19",
-    "concurrently": "^8.2.2",
-    "cross-env": "^7.0.3",
-    "leaflet": "^1.9.4",
-    "leaflet.markercluster": "^1.5.3",
     "postcss": "^8.4.39",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-router-dom": "^6.26.0",
-    "recharts": "^2.12.7",
     "tailwindcss": "^3.4.6",
     "vite": "^5.4.10"
   }

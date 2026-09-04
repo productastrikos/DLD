@@ -11,7 +11,7 @@ import { useI18n } from '../i18n';
  * rather than merely a spinner, and the reader arrives at the answer knowing
  * where it came from.
  *
- * The stages are real: they name what `server/lib/ai.js` does for that intent.
+ * The stages are real: they name what `api/ai.js` does for that intent.
  */
 
 const STAGES = [

@@ -1,3 +1,8 @@
+/* Ported verbatim from the Express server (server/lib/) — pure logic over the
+   in-memory dataset, with no Node dependency. Only the export syntax changed. */
+
+import { anomalies } from './ai.js';
+
 /**
  * KPI traceability — Section VII of the brief, mapped to the platform.
  *
@@ -172,7 +177,7 @@ function build(db, now) {
         K({
           id: 'agreements_at_risk', name: 'Agreements at risk',
           definition: 'Live agreements tripping at least one anomaly rule.',
-          value: require('./ai').anomalies(db, NOW).length, unit: '', target: 8, direction: 'down',
+          value: anomalies(db, NOW).length, unit: '', target: 8, direction: 'down',
           where: { screen: 'Sponsorships Ledger', route: '/dld/sponsorships', widget: 'AI anomaly detection panel' },
         }),
       ],
@@ -282,4 +287,4 @@ function build(db, now) {
   };
 }
 
-module.exports = { build };
+export { build };
